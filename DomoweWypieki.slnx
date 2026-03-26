@@ -1,6 +1,4 @@
 <Solution>
-  <Folder Name="/SQL/">
-    <File Path="CreateDataBase.sql" />
-  </Folder>
-  <Project Path="DomoweWypieki/DomoweWypieki.csproj" />
+  <Folder Name="/Elementy rozwiązania/" />
+  <Project Path="DomoweWypieki/DomoweWypieki.csproj" Id="d45cc044-ce0c-4f3d-8d65-960611b1c9b1" />
 </Solution>

@@ -41,9 +41,9 @@ namespace DomoweWypieki
                     cbCustomers.ValueMember = "IdKlienta"; // To zapiszemy w bazie
 
                     // --- ŁADOWANIE ROZMIARÓW TORTÓW ---
-                    adapter.SelectCommand = new SqlCommand("SELECT IdRozmiaru, Rozmiar, CenaBazowa FROM TortRozmiary", connection);
-                    adapter.Fill(dsAddOrder, "TortRozmiary"); // Zmiana nazwy tabeli w DataSet
-                    cbCakeSize.DataSource = dsAddOrder.Tables["TortRozmiary"];
+                    adapter.SelectCommand = new SqlCommand("SELECT IdRozmiaru, Rozmiar, CenaBazowa FROM Torty", connection);
+                    adapter.Fill(dsAddOrder, "Torty"); // Zmiana nazwy tabeli w DataSet
+                    cbCakeSize.DataSource = dsAddOrder.Tables["Torty"];
                     cbCakeSize.DisplayMember = "Rozmiar"; // Zmiana z NazwaRozmiaru na Rozmiar
                     cbCakeSize.ValueMember = "IdRozmiaru";
 
@@ -77,7 +77,7 @@ namespace DomoweWypieki
                 if (int.TryParse(cbCakeSize.SelectedValue.ToString(), out int idR))
                 {
                     // WAŻNE: Upewnij się, że nazwa "TortRozmiary" jest identyczna jak w LoadComboBoxData!
-                    DataRow[] rows = dsAddOrder.Tables["TortRozmiary"].Select("IdRozmiaru = " + idR);
+                    DataRow[] rows = dsAddOrder.Tables["Torty"].Select("IdRozmiaru = " + idR);
 
                     if (rows.Length > 0)
                     {

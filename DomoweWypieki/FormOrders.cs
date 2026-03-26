@@ -34,15 +34,16 @@ namespace DomoweWypieki
                 {
                     // Budowanie zapytania SQL
                     string query = @"SELECT 
-                                z.IdZamowienia, 
-                                z.IdKlienta, 
-                                z.DataZlozenia, 
-                                z.DataRealizacji, 
-                                z.Status, 
-                                z.RabatProcent,
-                                ISNULL(p.CenaBazowa + p.SumaDoplat, 0) AS [Cena Tortu]
-                             FROM dbo.Zamowienia z
-                             LEFT JOIN dbo.PozycjeZamowienia p ON z.IdZamowienia = p.IdZamowienia";
+                                    z.IdZamowienia,
+                                    k.Imie + ' ' + k.Nazwisko AS Klient, 
+                                    CONVERT(VARCHAR(10), z.DataZlozenia, 104) AS [Data Złożenia] , 
+                                    CONVERT(VARCHAR(10), z.DataRealizacji, 104) AS [Data Realizacji], 
+                                    z.Status, 
+                                    CAST(CAST(z.RabatProcent * 100 AS INT) AS VARCHAR) + '%' AS [Rabat Procentowo],
+                                    ISNULL(p.CenaBazowa + p.SumaDoplat, 0) AS [Cena Tortu]
+                                FROM dbo.Zamowienia z
+                                INNER JOIN dbo.Klienci k ON z.IdKlienta = k.IdKlienta
+                                LEFT JOIN dbo.PozycjeZamowienia p ON z.IdZamowienia = p.IdZamowienia";
 
                     if (!string.IsNullOrWhiteSpace(searchTerm))
                     {
@@ -69,7 +70,7 @@ namespace DomoweWypieki
                         // Przypisanie nawigatora do źródła danych
                         bnOrders.BindingSource = bsOrders;
 
-                        UstawWygladTabeli();
+                        SetTableView();
                     }
                 }
             }
@@ -79,18 +80,16 @@ namespace DomoweWypieki
             }
         }
 
-        // Ta metoda naprawia błąd CS0103
-        private void UstawWygladTabeli()
+        private void SetTableView()
         {
             dgvOrders.ReadOnly = true;
             dgvOrders.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvOrders.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            // Upewniamy się, że IdKlienta jest widoczne (zmień z false na true)
-            if (dgvOrders.Columns.Contains("IdKlienta"))
-                dgvOrders.Columns["IdKlienta"].Visible = true;
+            // Ukrywam widok IDzamówienia, bo jest niepotrzebny dla użytkownika, a może wprowadzać w błąd
+            if (dgvOrders.Columns.Contains("IdZamowienia"))
+                dgvOrders.Columns["IdZamowienia"].Visible = false;
 
-            // Opcjonalnie: popraw nagłówek nowej kolumny z ceną
             if (dgvOrders.Columns.Contains("Cena Tortu"))
             {
                 dgvOrders.Columns["Cena Tortu"].DefaultCellStyle.Format = "C2"; // Format walutowy
@@ -103,21 +102,10 @@ namespace DomoweWypieki
             LoadOrders(txt_search_user.Text.Trim());
         }
 
-        private void dgvOrders_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btn_return_Click(object sender, EventArgs e)
         {
             this.Tag = "back";
             this.Close();
-        }
-
-
-        private void FormOrders_Load(object sender, EventArgs e)
-        {
-            
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)

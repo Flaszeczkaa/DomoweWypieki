@@ -22,11 +22,6 @@ namespace DomoweWypieki
 
         }
 
-        private void btn_Addons_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_Exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -44,6 +39,22 @@ namespace DomoweWypieki
             ordersForm.ShowDialog();
 
             this.Location = ordersForm.Location;
+
+            this.Show();
+        }
+
+        private void btn_Customers_Click(object sender, EventArgs e)
+        {
+            FormCustomers customersForm = new FormCustomers();
+
+            customersForm.StartPosition = FormStartPosition.Manual;
+
+            customersForm.Location = this.Location;
+
+            this.Hide();
+            customersForm.ShowDialog();
+
+            this.Location = customersForm.Location;
 
             this.Show();
         }

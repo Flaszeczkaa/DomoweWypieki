@@ -174,7 +174,7 @@
             // 
             // txtTotalPrice
             // 
-            this.txtTotalPrice.Location = new System.Drawing.Point(738, 414);
+            this.txtTotalPrice.Location = new System.Drawing.Point(738, 411);
             this.txtTotalPrice.Name = "txtTotalPrice";
             this.txtTotalPrice.Size = new System.Drawing.Size(200, 22);
             this.txtTotalPrice.TabIndex = 13;
@@ -203,9 +203,9 @@
             // 
             this.btn_price.BackColor = System.Drawing.Color.Salmon;
             this.btn_price.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
-            this.btn_price.Location = new System.Drawing.Point(482, 397);
+            this.btn_price.Location = new System.Drawing.Point(482, 391);
             this.btn_price.Name = "btn_price";
-            this.btn_price.Size = new System.Drawing.Size(216, 52);
+            this.btn_price.Size = new System.Drawing.Size(216, 58);
             this.btn_price.TabIndex = 16;
             this.btn_price.Text = "Oblicz kwotę zamówienia";
             this.btn_price.UseVisualStyleBackColor = false;
@@ -228,9 +228,9 @@
             // 
             this.btn_add_order.BackColor = System.Drawing.Color.Green;
             this.btn_add_order.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
-            this.btn_add_order.Location = new System.Drawing.Point(743, 507);
+            this.btn_add_order.Location = new System.Drawing.Point(743, 496);
             this.btn_add_order.Name = "btn_add_order";
-            this.btn_add_order.Size = new System.Drawing.Size(201, 52);
+            this.btn_add_order.Size = new System.Drawing.Size(201, 63);
             this.btn_add_order.TabIndex = 18;
             this.btn_add_order.Text = "Utwórz zamówienie";
             this.btn_add_order.UseVisualStyleBackColor = false;
@@ -240,9 +240,9 @@
             // 
             this.btn_cancel.BackColor = System.Drawing.Color.Red;
             this.btn_cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
-            this.btn_cancel.Location = new System.Drawing.Point(28, 507);
+            this.btn_cancel.Location = new System.Drawing.Point(28, 496);
             this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(201, 52);
+            this.btn_cancel.Size = new System.Drawing.Size(201, 63);
             this.btn_cancel.TabIndex = 19;
             this.btn_cancel.Text = "Anuluj dodawanie zamówienia";
             this.btn_cancel.UseVisualStyleBackColor = false;

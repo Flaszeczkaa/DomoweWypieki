@@ -75,6 +75,7 @@
             this.btn_Customers.TabIndex = 7;
             this.btn_Customers.Text = "👥 KLIENCI";
             this.btn_Customers.UseVisualStyleBackColor = false;
+            this.btn_Customers.Click += new System.EventHandler(this.btn_Customers_Click);
             // 
             // btn_Cakes
             // 

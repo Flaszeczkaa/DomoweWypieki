@@ -113,7 +113,6 @@
             this.dgvOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOrders.Size = new System.Drawing.Size(902, 281);
             this.dgvOrders.TabIndex = 13;
-            this.dgvOrders.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrders_CellContentClick);
             // 
             // btn_add_order
             // 
@@ -307,7 +306,6 @@
             this.MaximizeBox = false;
             this.Name = "FormOrders";
             this.Text = "FormOrders";
-            this.Load += new System.EventHandler(this.FormOrders_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bnOrders)).EndInit();
