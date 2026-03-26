@@ -33,9 +33,9 @@
             this.btn_Customers = new System.Windows.Forms.Button();
             this.btn_Cakes = new System.Windows.Forms.Button();
             this.btn_CakesSize = new System.Windows.Forms.Button();
-            this.btn_Addons = new System.Windows.Forms.Button();
             this.btn_Payments = new System.Windows.Forms.Button();
             this.btn_Exit = new System.Windows.Forms.Button();
+            this.btn_raports = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -61,6 +61,7 @@
             this.btn_Orders.TabIndex = 1;
             this.btn_Orders.Text = "🛒 ZAMÓWIENIA";
             this.btn_Orders.UseVisualStyleBackColor = false;
+            this.btn_Orders.Click += new System.EventHandler(this.btn_Orders_Click);
             // 
             // btn_Customers
             // 
@@ -101,27 +102,13 @@
             this.btn_CakesSize.Text = "🎂 ROZMIARY TORTÓW";
             this.btn_CakesSize.UseVisualStyleBackColor = false;
             // 
-            // btn_Addons
-            // 
-            this.btn_Addons.BackColor = System.Drawing.Color.Salmon;
-            this.btn_Addons.FlatAppearance.BorderSize = 0;
-            this.btn_Addons.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Addons.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btn_Addons.Location = new System.Drawing.Point(137, 368);
-            this.btn_Addons.Name = "btn_Addons";
-            this.btn_Addons.Size = new System.Drawing.Size(285, 75);
-            this.btn_Addons.TabIndex = 10;
-            this.btn_Addons.Text = "✨ DOPŁATY PREMIUM";
-            this.btn_Addons.UseVisualStyleBackColor = false;
-            this.btn_Addons.Click += new System.EventHandler(this.btn_Addons_Click);
-            // 
             // btn_Payments
             // 
             this.btn_Payments.BackColor = System.Drawing.Color.Salmon;
             this.btn_Payments.FlatAppearance.BorderSize = 0;
             this.btn_Payments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Payments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btn_Payments.Location = new System.Drawing.Point(549, 368);
+            this.btn_Payments.Location = new System.Drawing.Point(549, 352);
             this.btn_Payments.Name = "btn_Payments";
             this.btn_Payments.Size = new System.Drawing.Size(285, 75);
             this.btn_Payments.TabIndex = 11;
@@ -140,15 +127,29 @@
             this.btn_Exit.TabIndex = 12;
             this.btn_Exit.Text = "WYJŚCIE";
             this.btn_Exit.UseVisualStyleBackColor = false;
+            this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
+            // 
+            // btn_raports
+            // 
+            this.btn_raports.BackColor = System.Drawing.Color.Salmon;
+            this.btn_raports.FlatAppearance.BorderSize = 0;
+            this.btn_raports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_raports.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btn_raports.Location = new System.Drawing.Point(137, 352);
+            this.btn_raports.Name = "btn_raports";
+            this.btn_raports.Size = new System.Drawing.Size(285, 75);
+            this.btn_raports.TabIndex = 13;
+            this.btn_raports.Text = "🍰 RAPORTY";
+            this.btn_raports.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(956, 571);
+            this.Controls.Add(this.btn_raports);
             this.Controls.Add(this.btn_Exit);
             this.Controls.Add(this.btn_Payments);
-            this.Controls.Add(this.btn_Addons);
             this.Controls.Add(this.btn_CakesSize);
             this.Controls.Add(this.btn_Cakes);
             this.Controls.Add(this.btn_Customers);
@@ -171,9 +172,9 @@
         private System.Windows.Forms.Button btn_Customers;
         private System.Windows.Forms.Button btn_Cakes;
         private System.Windows.Forms.Button btn_CakesSize;
-        private System.Windows.Forms.Button btn_Addons;
         private System.Windows.Forms.Button btn_Payments;
         private System.Windows.Forms.Button btn_Exit;
+        private System.Windows.Forms.Button btn_raports;
     }
 }
 
