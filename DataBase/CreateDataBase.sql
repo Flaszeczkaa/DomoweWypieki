@@ -68,7 +68,7 @@ CREATE TABLE dbo.PozycjeZamowienia (
     
     -- Klucze obce (mogą być NULL, bo pozycja to albo ciasto, albo tort)
     IdCiasta INT NULL,
-    IdRozmiaruTortu INT NULL,
+    IdRozmiaru INT NULL,
     
     Ilosc INT NOT NULL DEFAULT 1 CHECK (Ilosc >= 1),
     
@@ -86,6 +86,6 @@ CREATE TABLE dbo.PozycjeZamowienia (
 
     CONSTRAINT FK_PozycjeZam_Zamowienia FOREIGN KEY (IdZamowienia) REFERENCES dbo.Zamowienia(IdZamowienia),
     CONSTRAINT FK_PozycjeZam_Ciasta FOREIGN KEY (IdCiasta) REFERENCES dbo.Ciasta(IdCiasta),
-    CONSTRAINT FK_PozycjeZam_TortRozmiary FOREIGN KEY (IdRozmiaruTortu) REFERENCES dbo.TortRozmiary(IdRozmiaru)
+    CONSTRAINT FK_PozycjeZam_Torty FOREIGN KEY (IdRozmiaru) REFERENCES dbo.Torty(IdRozmiaru)
 );
 GO
