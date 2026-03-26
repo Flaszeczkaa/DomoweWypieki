@@ -33,14 +33,22 @@ namespace DomoweWypieki
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     // Budowanie zapytania SQL
-                    string query = "SELECT * FROM dbo.Zamowienia";
+                    string query = @"SELECT 
+                                z.IdZamowienia, 
+                                z.IdKlienta, 
+                                z.DataZlozenia, 
+                                z.DataRealizacji, 
+                                z.Status, 
+                                z.RabatProcent,
+                                ISNULL(p.CenaBazowa + p.SumaDoplat, 0) AS [Cena Tortu]
+                             FROM dbo.Zamowienia z
+                             LEFT JOIN dbo.PozycjeZamowienia p ON z.IdZamowienia = p.IdZamowienia";
 
                     if (!string.IsNullOrWhiteSpace(searchTerm))
                     {
-                        // Poprawna składnia verbatim string (@ przed cudzysłowem)
-                        query += @" WHERE Status LIKE @search 
-                                    OR CAST(IdKlienta AS VARCHAR) LIKE @search 
-                                    OR CAST(IdZamowienia AS VARCHAR) LIKE @search";
+                        query += @" WHERE z.Status LIKE @search 
+                            OR CAST(z.IdKlienta AS VARCHAR) LIKE @search 
+                            OR CAST(z.IdZamowienia AS VARCHAR) LIKE @search";
                     }
 
                     using (SqlCommand command = new SqlCommand(query, connection))
@@ -75,13 +83,19 @@ namespace DomoweWypieki
         private void UstawWygladTabeli()
         {
             dgvOrders.ReadOnly = true;
-            dgvOrders.AllowUserToAddRows = false;
-            dgvOrders.RowHeadersVisible = false;
             dgvOrders.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvOrders.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
+            // Upewniamy się, że IdKlienta jest widoczne (zmień z false na true)
             if (dgvOrders.Columns.Contains("IdKlienta"))
-                dgvOrders.Columns["IdKlienta"].Visible = false;
+                dgvOrders.Columns["IdKlienta"].Visible = true;
+
+            // Opcjonalnie: popraw nagłówek nowej kolumny z ceną
+            if (dgvOrders.Columns.Contains("Cena Tortu"))
+            {
+                dgvOrders.Columns["Cena Tortu"].DefaultCellStyle.Format = "C2"; // Format walutowy
+                dgvOrders.Columns["Cena Tortu"].DefaultCellStyle.ForeColor = Color.DarkGreen;
+            }
         }
 
         private void btn_search_user_Click(object sender, EventArgs e)
@@ -117,7 +131,7 @@ namespace DomoweWypieki
                 string status = selectedRow.Cells["Status"].Value.ToString();
 
                 // 2. Logika sprawdzania statusu
-                if (status == "Nowe")
+                if (status == "Przyjęte")
                 {
                     // Pytamy dla pewności, czy na pewno usunąć (profesjonalny dodatek)
                     DialogResult result = MessageBox.Show($"Czy na pewno chcesz anulować i usunąć zamówienie nr {idOrder}?",
@@ -146,9 +160,9 @@ namespace DomoweWypieki
             {
                 // Usuwamy wszystko po kolei, od najniższego poziomu do głównego rekordu
                 string query = @"
-            DELETE FROM dbo.PozycjeZamowienia WHERE IdZamowienia = @id;
-            DELETE FROM dbo.Platnosci WHERE IdZamowienia = @id;
-            DELETE FROM dbo.Zamowienia WHERE IdZamowienia = @id;";
+                    DELETE FROM dbo.PozycjeZamowienia WHERE IdZamowienia = @id;
+                    DELETE FROM dbo.Platnosci WHERE IdZamowienia = @id;
+                    DELETE FROM dbo.Zamowienia WHERE IdZamowienia = @id;";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -176,11 +190,16 @@ namespace DomoweWypieki
             FormAddOrder neworderForm = new FormAddOrder();
 
             neworderForm.StartPosition = FormStartPosition.Manual;
-
             neworderForm.Location = this.Location;
 
             this.Hide();
-            neworderForm.ShowDialog();
+
+            if (neworderForm.ShowDialog() == DialogResult.OK)
+            {
+                LoadOrders("");
+            }
+
+            //neworderForm.ShowDialog();
 
             this.Location = neworderForm.Location;
 
