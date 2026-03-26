@@ -50,26 +50,15 @@ CREATE TABLE dbo.Ciasta (
 );
 GO
 
--- 6. Tabela: TortRozmiary 
-CREATE TABLE dbo.TortRozmiary (
+-- 6. Tabela: Torty
+CREATE TABLE dbo.Torty (
     IdRozmiaru INT IDENTITY(1,1) PRIMARY KEY,
     Rozmiar NVARCHAR(20) NOT NULL,
     CenaBazowa DECIMAL(12,2) NOT NULL CHECK (CenaBazowa > 0)
 );
 GO
 
--- 7. Tabela: TortDoplaty 
-CREATE TABLE dbo.TortDoplaty (
-    IdDoplaty INT IDENTITY(1,1) PRIMARY KEY,
-    Nazwa NVARCHAR(120) NOT NULL,
-    TypNaliczania NVARCHAR(10) NOT NULL, -- 'KWOTA' lub 'PROCENT'
-    Wartosc DECIMAL(12,4) NOT NULL CHECK (Wartosc > 0),
-    Aktywna BIT NOT NULL DEFAULT 1,
-    CONSTRAINT CK_TypNaliczania CHECK (TypNaliczania IN (N'KWOTA', N'PROCENT'))
-);
-GO
-
--- 8. Tabela: PozycjeZamowienia 
+-- 7. Tabela: PozycjeZamowienia 
 CREATE TABLE dbo.PozycjeZamowienia (
     IdPozycji INT IDENTITY(1,1) PRIMARY KEY,
     IdZamowienia INT NOT NULL,
