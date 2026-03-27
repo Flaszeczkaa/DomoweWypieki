@@ -57,8 +57,9 @@
             // 
             this.txtFirstName.Location = new System.Drawing.Point(481, 172);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(158, 22);
+            this.txtFirstName.Size = new System.Drawing.Size(197, 22);
             this.txtFirstName.TabIndex = 17;
+            this.txtFirstName.TextChanged += new System.EventHandler(this.txtFirstName_TextChanged);
             // 
             // lbl_name
             // 
@@ -69,6 +70,7 @@
             this.lbl_name.Size = new System.Drawing.Size(87, 20);
             this.lbl_name.TabIndex = 18;
             this.lbl_name.Text = "Podaj imię";
+            this.lbl_name.Click += new System.EventHandler(this.lbl_name_Click);
             // 
             // lbl_surename
             // 
@@ -79,27 +81,31 @@
             this.lbl_surename.Size = new System.Drawing.Size(125, 20);
             this.lbl_surename.TabIndex = 19;
             this.lbl_surename.Text = "Podaj nazwisko";
+            this.lbl_surename.Click += new System.EventHandler(this.lbl_surename_Click);
             // 
             // txtLastName
             // 
             this.txtLastName.Location = new System.Drawing.Point(481, 237);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(158, 22);
+            this.txtLastName.Size = new System.Drawing.Size(197, 22);
             this.txtLastName.TabIndex = 20;
+            this.txtLastName.TextChanged += new System.EventHandler(this.txtLastName_TextChanged);
             // 
             // txtPhone
             // 
             this.txtPhone.Location = new System.Drawing.Point(481, 378);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(158, 22);
+            this.txtPhone.Size = new System.Drawing.Size(197, 22);
             this.txtPhone.TabIndex = 21;
+            this.txtPhone.TextChanged += new System.EventHandler(this.txtPhone_TextChanged);
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(481, 310);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(158, 22);
+            this.txtEmail.Size = new System.Drawing.Size(197, 22);
             this.txtEmail.TabIndex = 22;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // label2
             // 
@@ -110,6 +116,7 @@
             this.label2.Size = new System.Drawing.Size(96, 20);
             this.label2.TabIndex = 23;
             this.label2.Text = "Podaj email";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -120,6 +127,7 @@
             this.label3.Size = new System.Drawing.Size(167, 20);
             this.label3.TabIndex = 24;
             this.label3.Text = "Podaj numer telefonu";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // btnSave
             // 
@@ -154,6 +162,7 @@
             this.label4.Size = new System.Drawing.Size(513, 29);
             this.label4.TabIndex = 27;
             this.label4.Text = "FORMULARZ TWORZENIA UŻYTKOWNIKA";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // FormAddClient
             // 

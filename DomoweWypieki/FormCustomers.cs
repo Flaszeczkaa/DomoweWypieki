@@ -217,5 +217,35 @@ namespace DomoweWypieki
                 }
             }
         }
+
+        private void dgv_customers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // 1. Pobieramy dane z zaznaczonego wiersza
+                int id = Convert.ToInt32(dgv_customers.Rows[e.RowIndex].Cells["IdKlienta"].Value);
+                string imie = dgv_customers.Rows[e.RowIndex].Cells["Imie"].Value.ToString();
+                string nazwisko = dgv_customers.Rows[e.RowIndex].Cells["Nazwisko"].Value.ToString();
+                string email = dgv_customers.Rows[e.RowIndex].Cells["Email"].Value.ToString();
+                string telefon = dgv_customers.Rows[e.RowIndex].Cells["Telefon"].Value.ToString();
+
+                // 2. Otwieramy okno edycji i przekazujemy dane przez konstruktor
+                using (FormEditClient editForm = new FormEditClient(id, imie, nazwisko, email, telefon))
+                {
+                    editForm.StartPosition = FormStartPosition.Manual; 
+                    editForm.Location = this.Location;
+                    this.Hide();
+
+                    if (editForm.ShowDialog() == DialogResult.OK)
+                    {
+                        // 3. Jeśli zapisano zmiany, odświeżamy tabelę
+                        LoadClients("");
+                    }
+
+                    this.Location = editForm.Location;
+                    this.Show();
+                }
+            }
+        }
     }
 }

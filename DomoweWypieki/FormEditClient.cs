@@ -2,19 +2,33 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace DomoweWypieki
 {
-    public partial class FormAddClient : Form
+    public partial class FormEditClient : Form
     {
-        public FormAddClient()
+        private int clientId;
+        string connectionString = @"Data Source=localhost;Initial Catalog=DomoweWypieki;Integrated Security=True";
+
+        // Konstruktor przyjmujący dane klienta
+        public FormEditClient(int id, string imie, string nazwisko, string email, string telefon)
+        {
+            InitializeComponent();
+            clientId = id;
+            txtFirstName.Text = imie;
+            txtLastName.Text = nazwisko;
+            txtEmail.Text = email;
+            txtPhone.Text = telefon;
+        }
+
+        public FormEditClient()
         {
             InitializeComponent();
         }
@@ -46,15 +60,13 @@ namespace DomoweWypieki
                 return;
             }
 
-            // --- 2. ZAPIS DO BAZY (ADO.NET) ---
-            string connectionString = @"Data Source=localhost;Initial Catalog=DomoweWypieki;Integrated Security=True";
-
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string sql = @"INSERT INTO Klienci (Imie, Nazwisko, Email, Telefon) 
-                           VALUES (@imie, @nazwisko, @email, @telefon)";
+                    string sql = @"UPDATE Klienci 
+                               SET Imie = @imie, Nazwisko = @nazwisko, Email = @email, Telefon = @telefon 
+                               WHERE IdKlienta = @id";
 
                     using (SqlCommand cmd = new SqlCommand(sql, connection))
                     {
@@ -62,11 +74,12 @@ namespace DomoweWypieki
                         cmd.Parameters.AddWithValue("@nazwisko", txtLastName.Text.Trim());
                         cmd.Parameters.AddWithValue("@email", txtEmail.Text.Trim());
                         cmd.Parameters.AddWithValue("@telefon", txtPhone.Text.Trim());
+                        cmd.Parameters.AddWithValue("@id", clientId);
 
                         connection.Open();
                         cmd.ExecuteNonQuery();
 
-                        MessageBox.Show("Klient dodany pomyślnie!");
+                        MessageBox.Show("Dane klienta zostały zaktualizowane!");
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }
@@ -74,78 +87,24 @@ namespace DomoweWypieki
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Błąd zapisu: " + ex.Message);
+                MessageBox.Show("Błąd edycji: " + ex.Message);
             }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtFirstName.Text) ||
-        !string.IsNullOrWhiteSpace(txtLastName.Text) ||
-        !string.IsNullOrWhiteSpace(txtEmail.Text))
-            {
-                // 2. Jeśli pola nie są puste, pytamy o potwierdzenie
-                DialogResult result = MessageBox.Show(
-                    "Czy na pewno chcesz anulować? Wprowadzone dane klienta zostaną utracone.",
-                    "Potwierdzenie",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show(
+                "Czy na pewno chcesz przerwać edycję? Wszystkie wprowadzone zmiany zostaną utracone.",
+                "Anulowanie zmian",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
 
-                if (result == DialogResult.Yes)
-                {
-                    this.Close(); // Zamyka tylko to okno i wraca do FormCustomers
-                }
-            }
-            else
+            if (result == DialogResult.Yes)
             {
-                // 3. Jeśli pola są puste, zamykamy bez pytania
+                // Ustawiamy Cancel, aby okno główne wiedziało, że nie musi odświeżać tabeli
+                this.DialogResult = DialogResult.Cancel;
                 this.Close();
             }
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtEmail_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtPhone_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtLastName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_surename_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_name_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtFirstName_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
