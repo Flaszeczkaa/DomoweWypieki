@@ -98,8 +98,13 @@
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+<<<<<<< HEAD
             this.bindingNavigatorCountItem.Size = new System.Drawing.Size(38, 28);
             this.bindingNavigatorCountItem.Text = "z {0}";
+=======
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(45, 24);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+>>>>>>> d2af85256e4f431ed05b0382ad1bbce88002669c
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
             // bindingNavigatorMoveFirstItem
@@ -213,6 +218,7 @@
             this.btn_delete_customer.TabIndex = 25;
             this.btn_delete_customer.Text = "Usuń klienta";
             this.btn_delete_customer.UseVisualStyleBackColor = false;
+            this.btn_delete_customer.Click += new System.EventHandler(this.btn_delete_customer_Click);
             // 
             // btn_add_customer
             // 
@@ -226,6 +232,7 @@
             this.btn_add_customer.TabIndex = 24;
             this.btn_add_customer.Text = "Dodaj klienta";
             this.btn_add_customer.UseVisualStyleBackColor = false;
+            this.btn_add_customer.Click += new System.EventHandler(this.btn_add_customer_Click);
             // 
             // dgv_customers
             // 
@@ -241,6 +248,7 @@
             this.dgv_customers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_customers.Size = new System.Drawing.Size(902, 281);
             this.dgv_customers.TabIndex = 23;
+            this.dgv_customers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_customers_CellDoubleClick);
             // 
             // btn_search
             // 
@@ -254,6 +262,7 @@
             this.btn_search.TabIndex = 22;
             this.btn_search.Text = "Szukaj";
             this.btn_search.UseVisualStyleBackColor = false;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // txt_search_user
             // 
