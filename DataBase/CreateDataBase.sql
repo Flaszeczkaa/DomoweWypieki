@@ -74,7 +74,7 @@ CREATE TABLE dbo.RodzajePlatnosci (
 -- Tabela 7: Platnosci 
 CREATE TABLE dbo.Platnosci (
     IdPlatnosci INT IDENTITY(1,1) PRIMARY KEY,
-    IdZamowienia INT NOT NULL,
+    IdZamowienia INT NOT NULL UNIQUE,
     IdRodzajuPlatnosci INT NOT NULL,
     DataPlatnosci DATETIME2 NOT NULL DEFAULT SYSDATETIME(),
     Kwota DECIMAL(12,2) NOT NULL CHECK (Kwota > 0),
