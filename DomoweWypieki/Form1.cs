@@ -58,5 +58,10 @@ namespace DomoweWypieki
 
             this.Show();
         }
+
+        private void btn_Cakes_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

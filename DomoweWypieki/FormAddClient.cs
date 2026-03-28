@@ -147,5 +147,10 @@ namespace DomoweWypieki
         {
 
         }
+
+        private void FormAddClient_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

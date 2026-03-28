@@ -39,7 +39,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lbl_AddUserInfo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -50,24 +50,25 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(956, 90);
             this.label1.TabIndex = 16;
-            this.label1.Text = "UTWÓRZ UŻYTKOWNIKA";
+            this.label1.Text = "ZARZĄDZANIE UŻYTKOWNIKIEM";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Location = new System.Drawing.Point(481, 172);
+            this.txtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txtFirstName.Location = new System.Drawing.Point(487, 168);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(197, 22);
+            this.txtFirstName.Size = new System.Drawing.Size(197, 30);
             this.txtFirstName.TabIndex = 17;
             this.txtFirstName.TextChanged += new System.EventHandler(this.txtFirstName_TextChanged);
             // 
             // lbl_name
             // 
             this.lbl_name.AutoSize = true;
-            this.lbl_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.8F);
-            this.lbl_name.Location = new System.Drawing.Point(292, 174);
+            this.lbl_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lbl_name.Location = new System.Drawing.Point(265, 173);
             this.lbl_name.Name = "lbl_name";
-            this.lbl_name.Size = new System.Drawing.Size(87, 20);
+            this.lbl_name.Size = new System.Drawing.Size(112, 25);
             this.lbl_name.TabIndex = 18;
             this.lbl_name.Text = "Podaj imię";
             this.lbl_name.Click += new System.EventHandler(this.lbl_name_Click);
@@ -75,45 +76,48 @@
             // lbl_surename
             // 
             this.lbl_surename.AutoSize = true;
-            this.lbl_surename.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.8F);
-            this.lbl_surename.Location = new System.Drawing.Point(292, 239);
+            this.lbl_surename.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lbl_surename.Location = new System.Drawing.Point(265, 238);
             this.lbl_surename.Name = "lbl_surename";
-            this.lbl_surename.Size = new System.Drawing.Size(125, 20);
+            this.lbl_surename.Size = new System.Drawing.Size(162, 25);
             this.lbl_surename.TabIndex = 19;
             this.lbl_surename.Text = "Podaj nazwisko";
             this.lbl_surename.Click += new System.EventHandler(this.lbl_surename_Click);
             // 
             // txtLastName
             // 
-            this.txtLastName.Location = new System.Drawing.Point(481, 237);
+            this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txtLastName.Location = new System.Drawing.Point(487, 235);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(197, 22);
+            this.txtLastName.Size = new System.Drawing.Size(197, 30);
             this.txtLastName.TabIndex = 20;
             this.txtLastName.TextChanged += new System.EventHandler(this.txtLastName_TextChanged);
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(481, 378);
+            this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txtPhone.Location = new System.Drawing.Point(487, 374);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(197, 22);
+            this.txtPhone.Size = new System.Drawing.Size(197, 30);
             this.txtPhone.TabIndex = 21;
             this.txtPhone.TextChanged += new System.EventHandler(this.txtPhone_TextChanged);
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(481, 310);
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txtEmail.Location = new System.Drawing.Point(487, 306);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(197, 22);
+            this.txtEmail.Size = new System.Drawing.Size(197, 30);
             this.txtEmail.TabIndex = 22;
             this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.8F);
-            this.label2.Location = new System.Drawing.Point(292, 310);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(265, 311);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 20);
+            this.label2.Size = new System.Drawing.Size(124, 25);
             this.label2.TabIndex = 23;
             this.label2.Text = "Podaj email";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -121,10 +125,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.8F);
-            this.label3.Location = new System.Drawing.Point(292, 380);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(265, 379);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(167, 20);
+            this.label3.Size = new System.Drawing.Size(216, 25);
             this.label3.TabIndex = 24;
             this.label3.Text = "Podaj numer telefonu";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -133,9 +137,9 @@
             // 
             this.btnSave.BackColor = System.Drawing.Color.Green;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
-            this.btnSave.Location = new System.Drawing.Point(731, 454);
+            this.btnSave.Location = new System.Drawing.Point(684, 473);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(201, 90);
+            this.btnSave.Size = new System.Drawing.Size(248, 71);
             this.btnSave.TabIndex = 25;
             this.btnSave.Text = "Zapisz użytkownika";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -145,31 +149,31 @@
             // 
             this.btnCancel.BackColor = System.Drawing.Color.Red;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
-            this.btnCancel.Location = new System.Drawing.Point(37, 454);
+            this.btnCancel.Location = new System.Drawing.Point(36, 473);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(206, 90);
+            this.btnCancel.Size = new System.Drawing.Size(248, 71);
             this.btnCancel.TabIndex = 26;
-            this.btnCancel.Text = "Anuluj dodawanie użytkownika";
+            this.btnCancel.Text = "Anuluj i wyjdź";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // label4
+            // lbl_AddUserInfo
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F);
-            this.label4.Location = new System.Drawing.Point(232, 112);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(513, 29);
-            this.label4.TabIndex = 27;
-            this.label4.Text = "FORMULARZ TWORZENIA UŻYTKOWNIKA";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.lbl_AddUserInfo.AutoSize = true;
+            this.lbl_AddUserInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F);
+            this.lbl_AddUserInfo.Location = new System.Drawing.Point(232, 112);
+            this.lbl_AddUserInfo.Name = "lbl_AddUserInfo";
+            this.lbl_AddUserInfo.Size = new System.Drawing.Size(513, 29);
+            this.lbl_AddUserInfo.TabIndex = 27;
+            this.lbl_AddUserInfo.Text = "FORMULARZ TWORZENIA UŻYTKOWNIKA";
+            this.lbl_AddUserInfo.Click += new System.EventHandler(this.label4_Click);
             // 
             // FormAddClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(956, 571);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lbl_AddUserInfo);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label3);
@@ -183,6 +187,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FormAddClient";
             this.Text = "FormAddClient";
+            this.Load += new System.EventHandler(this.FormAddClient_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,6 +206,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbl_AddUserInfo;
     }
 }
