@@ -17,10 +17,6 @@ namespace DomoweWypieki
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void btn_Exit_Click(object sender, EventArgs e)
         {
@@ -39,7 +35,7 @@ namespace DomoweWypieki
 
         private void btn_AddOrder_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btn_ViewingOrders_Click(object sender, EventArgs e)
