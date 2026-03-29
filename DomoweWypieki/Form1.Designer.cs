@@ -59,7 +59,7 @@
             this.btn_AddOrder.TabIndex = 1;
             this.btn_AddOrder.Text = "🛒 DODAJ NOWE ZAMÓWIENIE";
             this.btn_AddOrder.UseVisualStyleBackColor = false;
-            this.btn_AddOrder.Click += new System.EventHandler(this.btn_Orders_Click);
+            this.btn_AddOrder.Click += new System.EventHandler(this.btn_AddOrder_Click);
             // 
             // btn_Customers
             // 
@@ -87,7 +87,7 @@
             this.btn_CakesOffer.TabIndex = 8;
             this.btn_CakesOffer.Text = "🍰 ZARZĄDZANIE OFERTĄ CUKIERNII\r\n";
             this.btn_CakesOffer.UseVisualStyleBackColor = false;
-            this.btn_CakesOffer.Click += new System.EventHandler(this.btn_Cakes_Click);
+            this.btn_CakesOffer.Click += new System.EventHandler(this.btn_CakesOffer_Click);
             // 
             // btn_ViewingOrders
             // 
@@ -101,6 +101,7 @@
             this.btn_ViewingOrders.TabIndex = 9;
             this.btn_ViewingOrders.Text = "📦 PRZEGLĄDANIE UTWORZONYCH ZAMÓWIEŃ";
             this.btn_ViewingOrders.UseVisualStyleBackColor = false;
+            this.btn_ViewingOrders.Click += new System.EventHandler(this.btn_ViewingOrders_Click);
             // 
             // btn_Exit
             // 

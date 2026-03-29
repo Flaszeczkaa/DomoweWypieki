@@ -27,39 +27,22 @@ namespace DomoweWypieki
             Application.Exit();
         }
 
-        private void btn_Orders_Click(object sender, EventArgs e)
+        private void btn_CakesOffer_Click(object sender, EventArgs e)
         {
-            FormOrders ordersForm = new FormOrders();
 
-            ordersForm.StartPosition = FormStartPosition.Manual;
-
-            ordersForm.Location = this.Location;
-
-            this.Hide();
-            ordersForm.ShowDialog();
-
-            this.Location = ordersForm.Location;
-
-            this.Show();
         }
 
         private void btn_Customers_Click(object sender, EventArgs e)
         {
-            FormCustomers customersForm = new FormCustomers();
 
-            customersForm.StartPosition = FormStartPosition.Manual;
-
-            customersForm.Location = this.Location;
-
-            this.Hide();
-            customersForm.ShowDialog();
-
-            this.Location = customersForm.Location;
-
-            this.Show();
         }
 
-        private void btn_Cakes_Click(object sender, EventArgs e)
+        private void btn_AddOrder_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_ViewingOrders_Click(object sender, EventArgs e)
         {
 
         }

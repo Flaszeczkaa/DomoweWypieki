@@ -37,7 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_CalculatePrice = new System.Windows.Forms.Button();
             this.gb_PremiumAdds = new System.Windows.Forms.GroupBox();
-            this.btn_AddOrder = new System.Windows.Forms.Button();
+            this.btn_NextStep = new System.Windows.Forms.Button();
             this.btn_CancelOrder = new System.Windows.Forms.Button();
             this.gb_AddItems = new System.Windows.Forms.GroupBox();
             this.btn_AddToCart = new System.Windows.Forms.Button();
@@ -151,22 +151,22 @@
             this.gb_PremiumAdds.TabStop = false;
             this.gb_PremiumAdds.Text = "Dodatki Premium";
             // 
-            // btn_AddOrder
+            // btn_NextStep
             // 
-            this.btn_AddOrder.BackColor = System.Drawing.Color.Green;
-            this.btn_AddOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btn_AddOrder.Location = new System.Drawing.Point(678, 546);
-            this.btn_AddOrder.Name = "btn_AddOrder";
-            this.btn_AddOrder.Size = new System.Drawing.Size(278, 51);
-            this.btn_AddOrder.TabIndex = 18;
-            this.btn_AddOrder.Text = "Dalej ➔ Przejdź do finalizacji";
-            this.btn_AddOrder.UseVisualStyleBackColor = false;
+            this.btn_NextStep.BackColor = System.Drawing.Color.Green;
+            this.btn_NextStep.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btn_NextStep.Location = new System.Drawing.Point(678, 546);
+            this.btn_NextStep.Name = "btn_NextStep";
+            this.btn_NextStep.Size = new System.Drawing.Size(278, 51);
+            this.btn_NextStep.TabIndex = 18;
+            this.btn_NextStep.Text = "Dalej ➔ Przejdź do finalizacji";
+            this.btn_NextStep.UseVisualStyleBackColor = false;
             // 
             // btn_CancelOrder
             // 
             this.btn_CancelOrder.BackColor = System.Drawing.Color.Red;
             this.btn_CancelOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btn_CancelOrder.Location = new System.Drawing.Point(6, 546);
+            this.btn_CancelOrder.Location = new System.Drawing.Point(12, 546);
             this.btn_CancelOrder.Name = "btn_CancelOrder";
             this.btn_CancelOrder.Size = new System.Drawing.Size(278, 51);
             this.btn_CancelOrder.TabIndex = 19;
@@ -175,7 +175,7 @@
             // 
             // gb_AddItems
             // 
-            this.gb_AddItems.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.gb_AddItems.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.gb_AddItems.Controls.Add(this.btn_AddToCart);
             this.gb_AddItems.Controls.Add(this.gb_AddCake);
             this.gb_AddItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -243,7 +243,7 @@
             // 
             // gb_Cart
             // 
-            this.gb_Cart.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.gb_Cart.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.gb_Cart.Controls.Add(this.dgv_Cart);
             this.gb_Cart.Controls.Add(this.btn_CalculatePrice);
             this.gb_Cart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -274,7 +274,7 @@
             this.Controls.Add(this.gb_Cart);
             this.Controls.Add(this.gb_AddItems);
             this.Controls.Add(this.btn_CancelOrder);
-            this.Controls.Add(this.btn_AddOrder);
+            this.Controls.Add(this.btn_NextStep);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_price);
             this.Name = "FormAddOrder_Step1";
@@ -303,7 +303,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_CalculatePrice;
         private System.Windows.Forms.GroupBox gb_PremiumAdds;
-        private System.Windows.Forms.Button btn_AddOrder;
+        private System.Windows.Forms.Button btn_NextStep;
         private System.Windows.Forms.Button btn_CancelOrder;
         private System.Windows.Forms.GroupBox gb_AddItems;
         private System.Windows.Forms.NumericUpDown nup_Cakes;

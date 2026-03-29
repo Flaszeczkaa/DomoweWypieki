@@ -81,7 +81,7 @@
             this.bn_clients.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bn_clients.Name = "bn_clients";
             this.bn_clients.PositionItem = this.bindingNavigatorPositionItem;
-            this.bn_clients.Size = new System.Drawing.Size(956, 27);
+            this.bn_clients.Size = new System.Drawing.Size(956, 31);
             this.bn_clients.TabIndex = 28;
             this.bn_clients.Text = "bindingNavigator1";
             // 
