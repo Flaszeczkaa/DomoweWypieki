@@ -6,22 +6,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace DomoweWypieki
 {
-    public partial class FormAddOrder : Form
+    public partial class FormAddOrder_Step2 : Form
     {
-        private string connectionString = @"Data Source=localhost;Initial Catalog=DomoweWypieki;Integrated Security=True";
-
-        private DataSet dsAddOrder = new DataSet();
-
-        public FormAddOrder()
+        public FormAddOrder_Step2()
         {
             InitializeComponent();
         }
-        
     }
 }

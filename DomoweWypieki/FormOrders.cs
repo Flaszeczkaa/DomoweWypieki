@@ -175,7 +175,7 @@ namespace DomoweWypieki
 
         private void btn_add_order_Click(object sender, EventArgs e)
         {
-            FormAddOrder neworderForm = new FormAddOrder();
+            FormAddOrder_Step1 neworderForm = new FormAddOrder_Step1();
 
             neworderForm.StartPosition = FormStartPosition.Manual;
             neworderForm.Location = this.Location;
