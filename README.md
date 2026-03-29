@@ -60,5 +60,5 @@ Follow these steps to run the application locally.
 ---
 
 ## 👥 Authors
-* **Natalia Flaszka** - [GitHub Profile] https://github.com/Flaszeczkaa. 
-* **Zuzanna Jonczyk** - [GitHub Profile] https://github.com/emilajonczyk7.
+* **Natalia Flaszka** - [GitHub Profile](https://github.com/Flaszeczkaa). 
+* **Zuzanna Jonczyk** - [GitHub Profile](https://github.com/emilajonczyk7).
