@@ -174,6 +174,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FormEditClient";
             this.Text = "FormEditClient";
+            this.Load += new System.EventHandler(this.FormEditClient_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

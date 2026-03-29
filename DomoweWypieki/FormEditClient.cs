@@ -106,5 +106,10 @@ namespace DomoweWypieki
                 this.Close();
             }
         }
+
+        private void FormEditClient_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
