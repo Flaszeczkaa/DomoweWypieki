@@ -155,9 +155,9 @@
             // 
             this.btn_NextStep.BackColor = System.Drawing.Color.Green;
             this.btn_NextStep.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btn_NextStep.Location = new System.Drawing.Point(678, 546);
+            this.btn_NextStep.Location = new System.Drawing.Point(611, 546);
             this.btn_NextStep.Name = "btn_NextStep";
-            this.btn_NextStep.Size = new System.Drawing.Size(278, 51);
+            this.btn_NextStep.Size = new System.Drawing.Size(345, 51);
             this.btn_NextStep.TabIndex = 18;
             this.btn_NextStep.Text = "Dalej ➔ Przejdź do finalizacji";
             this.btn_NextStep.UseVisualStyleBackColor = false;
@@ -168,7 +168,7 @@
             this.btn_CancelOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btn_CancelOrder.Location = new System.Drawing.Point(12, 546);
             this.btn_CancelOrder.Name = "btn_CancelOrder";
-            this.btn_CancelOrder.Size = new System.Drawing.Size(278, 51);
+            this.btn_CancelOrder.Size = new System.Drawing.Size(333, 51);
             this.btn_CancelOrder.TabIndex = 19;
             this.btn_CancelOrder.Text = "Anuluj i wyjdź ";
             this.btn_CancelOrder.UseVisualStyleBackColor = false;

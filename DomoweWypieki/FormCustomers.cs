@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms;
 
 namespace DomoweWypieki
 {
@@ -115,21 +114,10 @@ namespace DomoweWypieki
         private void btn_add_customer_Click(object sender, EventArgs e)
         {
             FormAddClient addClientForm = new FormAddClient();
-
-            addClientForm.StartPosition = FormStartPosition.Manual;
-            addClientForm.Location = this.Location;
-
             this.Hide();
-
-            // 2. Otwieramy okno dodawania klienta
-            if (addClientForm.ShowDialog() == DialogResult.OK)
-            {
-                // 3. Po pomyślnym dodaniu odświeżamy listę KLIENTÓW, a nie zamówień
-                LoadClients("");
-            }
-
-            this.Location = addClientForm.Location;
+            addClientForm.ShowDialog();
             this.Show();
+
         }
 
         private void btn_search_Click(object sender, EventArgs e)

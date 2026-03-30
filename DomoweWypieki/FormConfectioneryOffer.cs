@@ -24,7 +24,10 @@ namespace DomoweWypieki
 
         private void btn_add_cake_Click(object sender, EventArgs e)
         {
-
+            FormAddOffer formAddOffer = new FormAddOffer();
+            this.Hide();
+            formAddOffer.ShowDialog();
+            this.Show();
         }
 
         private void btn_return_Click(object sender, EventArgs e)

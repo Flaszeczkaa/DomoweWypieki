@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -15,9 +14,19 @@ namespace DomoweWypieki
 {
     public partial class FormOrders : Form
     {
-        private void toolStripLabel1_Click(object sender, EventArgs e)
+        public FormOrders()
         {
+            InitializeComponent();
+        }
 
+        private void btn_return_Click(object sender, EventArgs e)
+        {
+            DialogResult wynik = MessageBox.Show("Czy na pewno chcesz zakończyć pracę i wrócić do menu?", "Powrót", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (wynik == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
     }
 }

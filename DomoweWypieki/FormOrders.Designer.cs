@@ -133,6 +133,7 @@
             this.btn_return.TabIndex = 16;
             this.btn_return.Text = "Wróć";
             this.btn_return.UseVisualStyleBackColor = false;
+            this.btn_return.Click += new System.EventHandler(this.btn_return_Click);
             // 
             // lbl_search_criteria
             // 
@@ -273,7 +274,7 @@
             this.toolStripLabel1.Name = "toolStripLabel1";
             this.toolStripLabel1.Size = new System.Drawing.Size(279, 28);
             this.toolStripLabel1.Text = "PRZEGLĄDANIE ZAMÓWIEŃ";
-            this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
+        
             // 
             // dgv_OrderDetails
             // 
