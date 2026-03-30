@@ -89,7 +89,6 @@
             this.btn_search.TabIndex = 12;
             this.btn_search.Text = "Szukaj";
             this.btn_search.UseVisualStyleBackColor = false;
-            this.btn_search.Click += new System.EventHandler(this.btn_search_user_Click);
             // 
             // dgv_Orders
             // 
@@ -111,7 +110,7 @@
             // btn_cancel
             // 
             this.btn_cancel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_cancel.BackColor = System.Drawing.Color.Red;
+            this.btn_cancel.BackColor = System.Drawing.Color.Salmon;
             this.btn_cancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.btn_cancel.ForeColor = System.Drawing.Color.Black;
@@ -121,12 +120,11 @@
             this.btn_cancel.TabIndex = 15;
             this.btn_cancel.Text = "Anuluj zamówienie";
             this.btn_cancel.UseVisualStyleBackColor = false;
-            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // btn_return
             // 
             this.btn_return.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_return.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btn_return.BackColor = System.Drawing.Color.Salmon;
             this.btn_return.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_return.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.btn_return.Location = new System.Drawing.Point(26, 520);
@@ -135,7 +133,6 @@
             this.btn_return.TabIndex = 16;
             this.btn_return.Text = "Wróć";
             this.btn_return.UseVisualStyleBackColor = false;
-            this.btn_return.Click += new System.EventHandler(this.btn_return_Click);
             // 
             // lbl_search_criteria
             // 
@@ -274,8 +271,9 @@
             // 
             this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(315, 28);
-            this.toolStripLabel1.Text = "ZARZĄDZANIE ZAMÓWIENIAMI";
+            this.toolStripLabel1.Size = new System.Drawing.Size(279, 28);
+            this.toolStripLabel1.Text = "PRZEGLĄDANIE ZAMÓWIEŃ";
+            this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
             // 
             // dgv_OrderDetails
             // 
@@ -284,7 +282,7 @@
             this.dgv_OrderDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_OrderDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_OrderDetails.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dgv_OrderDetails.Location = new System.Drawing.Point(15, 29);
+            this.dgv_OrderDetails.Location = new System.Drawing.Point(57, 29);
             this.dgv_OrderDetails.Name = "dgv_OrderDetails";
             this.dgv_OrderDetails.ReadOnly = true;
             this.dgv_OrderDetails.RowHeadersVisible = false;
@@ -299,9 +297,9 @@
             this.groupBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.groupBox1.Controls.Add(this.dgv_OrderDetails);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox1.Location = new System.Drawing.Point(78, 336);
+            this.groupBox1.Location = new System.Drawing.Point(31, 336);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(815, 178);
+            this.groupBox1.Size = new System.Drawing.Size(897, 178);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Szcegóły wybranego zamówienia";

@@ -97,8 +97,8 @@
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(45, 28);
-            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(38, 28);
+            this.bindingNavigatorCountItem.Text = "z {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
             // bindingNavigatorMoveFirstItem
@@ -207,6 +207,7 @@
             this.btn_return.TabIndex = 29;
             this.btn_return.Text = "Wróć";
             this.btn_return.UseVisualStyleBackColor = false;
+            this.btn_return.Click += new System.EventHandler(this.btn_return_Click);
             // 
             // btn_withdraw_from_sale
             // 
@@ -239,9 +240,9 @@
             // 
             this.lbl_search_criteria.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_search_criteria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lbl_search_criteria.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
             this.lbl_search_criteria.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbl_search_criteria.Location = new System.Drawing.Point(65, 31);
+            this.lbl_search_criteria.Location = new System.Drawing.Point(69, 41);
             this.lbl_search_criteria.Name = "lbl_search_criteria";
             this.lbl_search_criteria.Size = new System.Drawing.Size(826, 41);
             this.lbl_search_criteria.TabIndex = 30;

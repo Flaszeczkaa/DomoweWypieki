@@ -93,16 +93,10 @@ namespace DomoweWypieki
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show(
-                "Czy na pewno chcesz przerwać edycję? Wszystkie wprowadzone zmiany zostaną utracone.",
-                "Anulowanie zmian",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
+            DialogResult wynik = MessageBox.Show("Czy na pewno chcesz zakończyć pracę i wrócić do menu?", "Powrót", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (result == DialogResult.Yes)
+            if (wynik == DialogResult.Yes)
             {
-                // Ustawiamy Cancel, aby okno główne wiedziało, że nie musi odświeżać tabeli
-                this.DialogResult = DialogResult.Cancel;
                 this.Close();
             }
         }

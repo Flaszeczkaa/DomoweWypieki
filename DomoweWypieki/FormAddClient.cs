@@ -85,15 +85,11 @@ namespace DomoweWypieki
         !string.IsNullOrWhiteSpace(txtEmail.Text))
             {
                 // 2. Jeśli pola nie są puste, pytamy o potwierdzenie
-                DialogResult result = MessageBox.Show(
-                    "Czy na pewno chcesz anulować? Wprowadzone dane klienta zostaną utracone.",
-                    "Potwierdzenie",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
+                DialogResult wynik = MessageBox.Show("Czy na pewno chcesz zakończyć pracę i wrócić do menu?", "Powrót", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                if (result == DialogResult.Yes)
+                if (wynik == DialogResult.Yes)
                 {
-                    this.Close(); // Zamyka tylko to okno i wraca do FormCustomers
+                    this.Close();
                 }
             }
             else

@@ -39,10 +39,10 @@
             this.dtp_RealizationDate = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txb_FinalPrice = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.cb_PaymentsMethod = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txb_FinalPrice = new System.Windows.Forms.TextBox();
             this.btn_CancelOrder = new System.Windows.Forms.Button();
             this.btn_AddOrder = new System.Windows.Forms.Button();
             this.gb_OrderData.SuspendLayout();
@@ -175,6 +175,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Podsumowanie i wybór płatności";
             // 
+            // txb_FinalPrice
+            // 
+            this.txb_FinalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txb_FinalPrice.Location = new System.Drawing.Point(425, 38);
+            this.txb_FinalPrice.Name = "txb_FinalPrice";
+            this.txb_FinalPrice.Size = new System.Drawing.Size(355, 30);
+            this.txb_FinalPrice.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label4.Location = new System.Drawing.Point(160, 38);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(172, 25);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Kwota ostateczna ";
+            // 
             // cb_PaymentsMethod
             // 
             this.cb_PaymentsMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -194,24 +212,6 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Metoda płatności";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label4.Location = new System.Drawing.Point(160, 38);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(172, 25);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Kwota ostateczna ";
-            // 
-            // txb_FinalPrice
-            // 
-            this.txb_FinalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txb_FinalPrice.Location = new System.Drawing.Point(425, 38);
-            this.txb_FinalPrice.Name = "txb_FinalPrice";
-            this.txb_FinalPrice.Size = new System.Drawing.Size(355, 30);
-            this.txb_FinalPrice.TabIndex = 3;
-            // 
             // btn_CancelOrder
             // 
             this.btn_CancelOrder.BackColor = System.Drawing.Color.Red;
@@ -222,6 +222,7 @@
             this.btn_CancelOrder.TabIndex = 29;
             this.btn_CancelOrder.Text = "Anuluj i wyjdź ";
             this.btn_CancelOrder.UseVisualStyleBackColor = false;
+            this.btn_CancelOrder.Click += new System.EventHandler(this.btn_CancelOrder_Click);
             // 
             // btn_AddOrder
             // 

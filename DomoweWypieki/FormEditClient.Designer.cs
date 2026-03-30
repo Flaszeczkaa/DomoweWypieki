@@ -57,10 +57,11 @@
             // lbl_UsersInfo
             // 
             this.lbl_UsersInfo.AutoSize = true;
-            this.lbl_UsersInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F);
+            this.lbl_UsersInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lbl_UsersInfo.ForeColor = System.Drawing.Color.Black;
             this.lbl_UsersInfo.Location = new System.Drawing.Point(168, 117);
             this.lbl_UsersInfo.Name = "lbl_UsersInfo";
-            this.lbl_UsersInfo.Size = new System.Drawing.Size(643, 29);
+            this.lbl_UsersInfo.Size = new System.Drawing.Size(682, 29);
             this.lbl_UsersInfo.TabIndex = 38;
             this.lbl_UsersInfo.Text = "FORMULARZ EDYTOWANIA DANYCH UŻYTKOWNIKA";
             // 
@@ -91,26 +92,26 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label3.Location = new System.Drawing.Point(227, 394);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(196, 25);
+            this.label3.Size = new System.Drawing.Size(216, 25);
             this.label3.TabIndex = 35;
             this.label3.Text = "Podaj numer telefonu";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.Location = new System.Drawing.Point(227, 324);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 25);
+            this.label2.Size = new System.Drawing.Size(124, 25);
             this.label2.TabIndex = 34;
             this.label2.Text = "Podaj email";
             // 
             // txtEmail
             // 
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.txtEmail.Location = new System.Drawing.Point(480, 321);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(225, 30);
@@ -118,7 +119,7 @@
             // 
             // txtPhone
             // 
-            this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.txtPhone.Location = new System.Drawing.Point(480, 389);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(225, 30);
@@ -126,7 +127,7 @@
             // 
             // txtLastName
             // 
-            this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.txtLastName.Location = new System.Drawing.Point(480, 248);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(225, 30);
@@ -135,26 +136,26 @@
             // lbl_surename
             // 
             this.lbl_surename.AutoSize = true;
-            this.lbl_surename.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lbl_surename.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lbl_surename.Location = new System.Drawing.Point(227, 253);
             this.lbl_surename.Name = "lbl_surename";
-            this.lbl_surename.Size = new System.Drawing.Size(148, 25);
+            this.lbl_surename.Size = new System.Drawing.Size(162, 25);
             this.lbl_surename.TabIndex = 30;
             this.lbl_surename.Text = "Podaj nazwisko";
             // 
             // lbl_name
             // 
             this.lbl_name.AutoSize = true;
-            this.lbl_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lbl_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lbl_name.Location = new System.Drawing.Point(227, 188);
             this.lbl_name.Name = "lbl_name";
-            this.lbl_name.Size = new System.Drawing.Size(102, 25);
+            this.lbl_name.Size = new System.Drawing.Size(112, 25);
             this.lbl_name.TabIndex = 29;
             this.lbl_name.Text = "Podaj imię";
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.txtFirstName.Location = new System.Drawing.Point(480, 183);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(225, 30);

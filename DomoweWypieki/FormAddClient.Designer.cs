@@ -160,10 +160,10 @@
             // lbl_AddUserInfo
             // 
             this.lbl_AddUserInfo.AutoSize = true;
-            this.lbl_AddUserInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F);
-            this.lbl_AddUserInfo.Location = new System.Drawing.Point(232, 112);
+            this.lbl_AddUserInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
+            this.lbl_AddUserInfo.Location = new System.Drawing.Point(217, 108);
             this.lbl_AddUserInfo.Name = "lbl_AddUserInfo";
-            this.lbl_AddUserInfo.Size = new System.Drawing.Size(513, 29);
+            this.lbl_AddUserInfo.Size = new System.Drawing.Size(544, 29);
             this.lbl_AddUserInfo.TabIndex = 27;
             this.lbl_AddUserInfo.Text = "FORMULARZ TWORZENIA UŻYTKOWNIKA";
             this.lbl_AddUserInfo.Click += new System.EventHandler(this.label4_Click);

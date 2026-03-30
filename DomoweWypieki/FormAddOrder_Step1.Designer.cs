@@ -172,6 +172,7 @@
             this.btn_CancelOrder.TabIndex = 19;
             this.btn_CancelOrder.Text = "Anuluj i wyjdź ";
             this.btn_CancelOrder.UseVisualStyleBackColor = false;
+            this.btn_CancelOrder.Click += new System.EventHandler(this.btn_CancelOrder_Click);
             // 
             // gb_AddItems
             // 

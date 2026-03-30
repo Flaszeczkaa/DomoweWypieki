@@ -104,8 +104,12 @@ namespace DomoweWypieki
 
         private void btn_return_Click(object sender, EventArgs e)
         {
-            this.Tag = "back";
-            this.Close();
+            DialogResult wynik = MessageBox.Show("Czy na pewno chcesz zakończyć pracę i wrócić do menu?", "Powrót", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (wynik == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void btn_add_customer_Click(object sender, EventArgs e)

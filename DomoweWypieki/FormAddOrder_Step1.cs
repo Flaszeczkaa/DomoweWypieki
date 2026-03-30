@@ -23,6 +23,14 @@ namespace DomoweWypieki
             InitializeComponent();
         }
 
-  
+        private void btn_CancelOrder_Click(object sender, EventArgs e)
+        {
+            DialogResult wynik = MessageBox.Show("Czy na pewno chcesz zakończyć pracę i wrócić do menu?", "Powrót", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (wynik == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
     }
 }

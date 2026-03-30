@@ -49,7 +49,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.3F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(0, -3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(956, 90);
+            this.label1.Size = new System.Drawing.Size(956, 98);
             this.label1.TabIndex = 18;
             this.label1.Text = "UTWÓRZ OFERTĘ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -57,10 +57,10 @@
             // lbl_UsersInfo
             // 
             this.lbl_UsersInfo.AutoSize = true;
-            this.lbl_UsersInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F);
-            this.lbl_UsersInfo.Location = new System.Drawing.Point(260, 106);
+            this.lbl_UsersInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
+            this.lbl_UsersInfo.Location = new System.Drawing.Point(265, 123);
             this.lbl_UsersInfo.Name = "lbl_UsersInfo";
-            this.lbl_UsersInfo.Size = new System.Drawing.Size(436, 29);
+            this.lbl_UsersInfo.Size = new System.Drawing.Size(462, 29);
             this.lbl_UsersInfo.TabIndex = 49;
             this.lbl_UsersInfo.Text = "FORMULARZ DODAWANIA OFERTY";
             // 
@@ -74,6 +74,7 @@
             this.btnCancel.TabIndex = 48;
             this.btnCancel.Text = "Anuluj i wyjdź";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -89,36 +90,36 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(23, 345);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(22, 350);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 25);
+            this.label3.Size = new System.Drawing.Size(120, 25);
             this.label3.TabIndex = 46;
             this.label3.Text = "Podaj cenę";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(537, 195);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(536, 213);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 25);
+            this.label2.Size = new System.Drawing.Size(113, 25);
             this.label2.TabIndex = 45;
             this.label2.Text = "Podaj opis";
             // 
             // txtEmail
             // 
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.txtEmail.Location = new System.Drawing.Point(675, 196);
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txtEmail.Location = new System.Drawing.Point(655, 214);
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(225, 176);
+            this.txtEmail.Size = new System.Drawing.Size(265, 184);
             this.txtEmail.TabIndex = 44;
             // 
             // txtoffername
             // 
-            this.txtoffername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.txtoffername.Location = new System.Drawing.Point(247, 262);
+            this.txtoffername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txtoffername.Location = new System.Drawing.Point(246, 280);
             this.txtoffername.Name = "txtoffername";
             this.txtoffername.Size = new System.Drawing.Size(225, 30);
             this.txtoffername.TabIndex = 42;
@@ -126,36 +127,38 @@
             // lbl_surename
             // 
             this.lbl_surename.AutoSize = true;
-            this.lbl_surename.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lbl_surename.Location = new System.Drawing.Point(23, 267);
+            this.lbl_surename.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lbl_surename.Location = new System.Drawing.Point(22, 285);
             this.lbl_surename.Name = "lbl_surename";
-            this.lbl_surename.Size = new System.Drawing.Size(124, 25);
+            this.lbl_surename.Size = new System.Drawing.Size(135, 25);
             this.lbl_surename.TabIndex = 41;
             this.lbl_surename.Text = "Podaj nazwę";
             // 
             // lbl_name
             // 
             this.lbl_name.AutoSize = true;
-            this.lbl_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lbl_name.Location = new System.Drawing.Point(23, 195);
+            this.lbl_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lbl_name.Location = new System.Drawing.Point(22, 222);
             this.lbl_name.Name = "lbl_name";
-            this.lbl_name.Size = new System.Drawing.Size(179, 25);
+            this.lbl_name.Size = new System.Drawing.Size(199, 25);
             this.lbl_name.TabIndex = 40;
             this.lbl_name.Text = "Podaj rodzaj oferty:";
             // 
             // comboBox1
             // 
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(247, 196);
+            this.comboBox1.Location = new System.Drawing.Point(246, 214);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(225, 24);
+            this.comboBox1.Size = new System.Drawing.Size(225, 33);
             this.comboBox1.TabIndex = 50;
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(247, 350);
+            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.numericUpDown1.Location = new System.Drawing.Point(246, 345);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(225, 22);
+            this.numericUpDown1.Size = new System.Drawing.Size(225, 30);
             this.numericUpDown1.TabIndex = 51;
             // 
             // FormAddOffer
