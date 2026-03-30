@@ -171,12 +171,10 @@ INSERT INTO Zamowienia (IdKlienta, DataZlozenia, DataRealizacji, IdStatusu, Raba
 -- 5 Płatności (IdRodzajuPlatnosci: 2=Karta, 1=Gotówka, 4=Blik, 3=Przelew)
 INSERT INTO Platnosci (IdZamowienia, DataPlatnosci, Kwota, IdRodzajuPlatnosci) VALUES 
 (1, '2024-05-20 10:05:00', 130.00, 2),
-(2, '2024-05-21 12:45:00', 50.00, 1),
-(2, '2024-05-28 16:00:00', 230.00, 3), -- reszta do zamówienia 2
+(2, '2024-05-28 16:00:00', 280.00, 3), 
 (3, '2024-05-23 09:20:00', 50.00, 1),
 (4, '2024-05-24 15:50:00', 430.00, 4),
 (5, '2024-05-25 11:10:00', 180.00, 1);
-
 -- 5 Pozycji Zamówień 
 INSERT INTO PozycjeZamowienia (IdZamowienia, IdProduktu, Ilosc, CenaBazowa, ProsbaKlienta, SumaDoplat) VALUES 
 (1, 1, 1.00, 130.00, NULL, 0.00), -- 1x Sernik Królewski
