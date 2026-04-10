@@ -21,7 +21,7 @@ CREATE TABLE dbo.Klienci (
     IdKlienta INT IDENTITY(1,1) PRIMARY KEY,
     Imie NVARCHAR(60) NOT NULL,
     Nazwisko NVARCHAR(60) NOT NULL,
-    Telefon NVARCHAR(30) NULL,
+    Telefon NVARCHAR(30) NOT NULL,
     Email NVARCHAR(50) NULL
 );
 GO
