@@ -60,7 +60,7 @@
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(197, 30);
             this.txtFirstName.TabIndex = 17;
-            this.txtFirstName.TextChanged += new System.EventHandler(this.txtFirstName_TextChanged);
+          
             // 
             // lbl_name
             // 
@@ -71,7 +71,7 @@
             this.lbl_name.Size = new System.Drawing.Size(112, 25);
             this.lbl_name.TabIndex = 18;
             this.lbl_name.Text = "Podaj imię";
-            this.lbl_name.Click += new System.EventHandler(this.lbl_name_Click);
+        
             // 
             // lbl_surename
             // 
@@ -82,7 +82,7 @@
             this.lbl_surename.Size = new System.Drawing.Size(162, 25);
             this.lbl_surename.TabIndex = 19;
             this.lbl_surename.Text = "Podaj nazwisko";
-            this.lbl_surename.Click += new System.EventHandler(this.lbl_surename_Click);
+        
             // 
             // txtLastName
             // 
@@ -91,7 +91,7 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(197, 30);
             this.txtLastName.TabIndex = 20;
-            this.txtLastName.TextChanged += new System.EventHandler(this.txtLastName_TextChanged);
+         
             // 
             // txtPhone
             // 
@@ -100,7 +100,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(197, 30);
             this.txtPhone.TabIndex = 21;
-            this.txtPhone.TextChanged += new System.EventHandler(this.txtPhone_TextChanged);
+
             // 
             // txtEmail
             // 
@@ -109,7 +109,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(197, 30);
             this.txtEmail.TabIndex = 22;
-            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
+          
             // 
             // label2
             // 
@@ -120,7 +120,7 @@
             this.label2.Size = new System.Drawing.Size(124, 25);
             this.label2.TabIndex = 23;
             this.label2.Text = "Podaj email";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+
             // 
             // label3
             // 
@@ -131,7 +131,7 @@
             this.label3.Size = new System.Drawing.Size(216, 25);
             this.label3.TabIndex = 24;
             this.label3.Text = "Podaj numer telefonu";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+ 
             // 
             // btnSave
             // 
@@ -166,7 +166,7 @@
             this.lbl_AddUserInfo.Size = new System.Drawing.Size(544, 29);
             this.lbl_AddUserInfo.TabIndex = 27;
             this.lbl_AddUserInfo.Text = "FORMULARZ TWORZENIA UŻYTKOWNIKA";
-            this.lbl_AddUserInfo.Click += new System.EventHandler(this.label4_Click);
+      
             // 
             // FormAddClient
             // 
@@ -187,7 +187,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FormAddClient";
             this.Text = "FormAddClient";
-            this.Load += new System.EventHandler(this.FormAddClient_Load);
+          
             this.ResumeLayout(false);
             this.PerformLayout();
 
