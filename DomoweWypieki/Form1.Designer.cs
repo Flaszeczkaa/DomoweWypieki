@@ -53,7 +53,7 @@
             this.btn_AddOrder.FlatAppearance.BorderSize = 0;
             this.btn_AddOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_AddOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btn_AddOrder.Location = new System.Drawing.Point(179, 315);
+            this.btn_AddOrder.Location = new System.Drawing.Point(179, 324);
             this.btn_AddOrder.Name = "btn_AddOrder";
             this.btn_AddOrder.Size = new System.Drawing.Size(608, 64);
             this.btn_AddOrder.TabIndex = 1;
@@ -67,7 +67,7 @@
             this.btn_Customers.FlatAppearance.BorderSize = 0;
             this.btn_Customers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Customers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btn_Customers.Location = new System.Drawing.Point(179, 219);
+            this.btn_Customers.Location = new System.Drawing.Point(179, 228);
             this.btn_Customers.Name = "btn_Customers";
             this.btn_Customers.Size = new System.Drawing.Size(608, 64);
             this.btn_Customers.TabIndex = 7;
@@ -81,7 +81,7 @@
             this.btn_CakesOffer.FlatAppearance.BorderSize = 0;
             this.btn_CakesOffer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_CakesOffer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btn_CakesOffer.Location = new System.Drawing.Point(179, 123);
+            this.btn_CakesOffer.Location = new System.Drawing.Point(179, 132);
             this.btn_CakesOffer.Name = "btn_CakesOffer";
             this.btn_CakesOffer.Size = new System.Drawing.Size(608, 64);
             this.btn_CakesOffer.TabIndex = 8;
@@ -95,7 +95,7 @@
             this.btn_ViewingOrders.FlatAppearance.BorderSize = 0;
             this.btn_ViewingOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ViewingOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btn_ViewingOrders.Location = new System.Drawing.Point(179, 417);
+            this.btn_ViewingOrders.Location = new System.Drawing.Point(179, 416);
             this.btn_ViewingOrders.Name = "btn_ViewingOrders";
             this.btn_ViewingOrders.Size = new System.Drawing.Size(608, 64);
             this.btn_ViewingOrders.TabIndex = 9;
@@ -109,7 +109,7 @@
             this.btn_Exit.FlatAppearance.BorderSize = 0;
             this.btn_Exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btn_Exit.Location = new System.Drawing.Point(727, 499);
+            this.btn_Exit.Location = new System.Drawing.Point(726, 510);
             this.btn_Exit.Name = "btn_Exit";
             this.btn_Exit.Size = new System.Drawing.Size(203, 49);
             this.btn_Exit.TabIndex = 12;

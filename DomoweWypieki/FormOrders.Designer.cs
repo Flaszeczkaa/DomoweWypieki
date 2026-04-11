@@ -320,8 +320,8 @@
             this.Controls.Add(this.txt_search_user);
             this.Controls.Add(this.textBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
             this.Name = "FormOrders";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormOrders";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Orders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsOrders)).EndInit();

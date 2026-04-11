@@ -260,7 +260,10 @@
             this.Controls.Add(this.btn_add_cake);
             this.Controls.Add(this.dgv_offer);
             this.Controls.Add(this.bn_Offer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormConfectioneryOffer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormConfectioneryOffer";
             ((System.ComponentModel.ISupportInitialize)(this.bn_Offer)).EndInit();
             this.bn_Offer.ResumeLayout(false);

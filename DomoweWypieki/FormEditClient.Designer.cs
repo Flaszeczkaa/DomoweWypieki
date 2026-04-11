@@ -178,7 +178,10 @@
             this.Controls.Add(this.lbl_name);
             this.Controls.Add(this.txtFirstName);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MinimizeBox = false;
             this.Name = "FormEditClient";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormEditClient";
             this.Load += new System.EventHandler(this.FormEditClient_Load);
             this.ResumeLayout(false);

@@ -179,7 +179,10 @@
             this.Controls.Add(this.lbl_surename);
             this.Controls.Add(this.lbl_name);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MinimizeBox = false;
             this.Name = "FormEditOffer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormEditOffer";
             ((System.ComponentModel.ISupportInitialize)(this.nup_Price)).EndInit();
             this.ResumeLayout(false);
