@@ -40,6 +40,9 @@
             this.lbl_surename = new System.Windows.Forms.Label();
             this.lbl_name = new System.Windows.Forms.Label();
             this.txtFirstName = new System.Windows.Forms.TextBox();
+            this.klienciTableAdapter1 = new DomoweWypieki.DomoweWypiekiDataSetTableAdapters.KlienciTableAdapter();
+            this.domoweWypiekiDataSet1 = new DomoweWypieki.DomoweWypiekiDataSet();
+            ((System.ComponentModel.ISupportInitialize)(this.domoweWypiekiDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -52,7 +55,6 @@
             this.label1.TabIndex = 17;
             this.label1.Text = "ZARZĄDZANIE UŻYTKOWNIKIEM";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-         
             // 
             // lbl_UsersInfo
             // 
@@ -161,6 +163,15 @@
             this.txtFirstName.Size = new System.Drawing.Size(225, 30);
             this.txtFirstName.TabIndex = 28;
             // 
+            // klienciTableAdapter1
+            // 
+            this.klienciTableAdapter1.ClearBeforeFill = true;
+            // 
+            // domoweWypiekiDataSet1
+            // 
+            this.domoweWypiekiDataSet1.DataSetName = "DomoweWypiekiDataSet";
+            this.domoweWypiekiDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // FormEditClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -183,7 +194,7 @@
             this.Name = "FormEditClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormEditClient";
-           
+            ((System.ComponentModel.ISupportInitialize)(this.domoweWypiekiDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,5 +214,7 @@
         private System.Windows.Forms.Label lbl_surename;
         private System.Windows.Forms.Label lbl_name;
         private System.Windows.Forms.TextBox txtFirstName;
+        private DomoweWypiekiDataSetTableAdapters.KlienciTableAdapter klienciTableAdapter1;
+        private DomoweWypiekiDataSet domoweWypiekiDataSet1;
     }
 }

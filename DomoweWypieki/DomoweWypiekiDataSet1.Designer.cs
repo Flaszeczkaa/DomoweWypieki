@@ -4616,14 +4616,14 @@ SELECT IdKlienta, Imie, Nazwisko, Telefon, Email FROM Klienci WHERE (IdKlienta =
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "UPDATE dbo.Klienci \r\nSET Imie = @Imie, Nazwisko = @Nazwisko, Telefon = @Telefon, " +
-                "Email = @Email \r\nWHERE IdKlienta = @IdKlienta";
+            this._commandCollection[1].CommandText = "UPDATE Klienci SET Imie=@name, Nazwisko=@surname, Telefon=@phone, Email=@email WH" +
+                "ERE IdKlienta=@id";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Imie", global::System.Data.SqlDbType.NVarChar, 60, global::System.Data.ParameterDirection.Input, 0, 0, "Imie", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nazwisko", global::System.Data.SqlDbType.NVarChar, 60, global::System.Data.ParameterDirection.Input, 0, 0, "Nazwisko", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Telefon", global::System.Data.SqlDbType.NVarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "Telefon", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Email", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdKlienta", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "IdKlienta", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.NVarChar, 60, global::System.Data.ParameterDirection.Input, 0, 0, "Imie", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@surname", global::System.Data.SqlDbType.NVarChar, 60, global::System.Data.ParameterDirection.Input, 0, 0, "Nazwisko", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@phone", global::System.Data.SqlDbType.NVarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "Telefon", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@email", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "IdKlienta", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4857,33 +4857,33 @@ SELECT IdKlienta, Imie, Nazwisko, Telefon, Email FROM Klienci WHERE (IdKlienta =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
-        public virtual int UpdateClientQuery(string Imie, string Nazwisko, string Telefon, string Email, int IdKlienta) {
+        public virtual int UpdateClientQuery(string name, string surname, string phone, string email, int id) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
-            if ((Imie == null)) {
-                throw new global::System.ArgumentNullException("Imie");
+            if ((name == null)) {
+                throw new global::System.ArgumentNullException("name");
             }
             else {
-                command.Parameters[0].Value = ((string)(Imie));
+                command.Parameters[0].Value = ((string)(name));
             }
-            if ((Nazwisko == null)) {
-                throw new global::System.ArgumentNullException("Nazwisko");
-            }
-            else {
-                command.Parameters[1].Value = ((string)(Nazwisko));
-            }
-            if ((Telefon == null)) {
-                throw new global::System.ArgumentNullException("Telefon");
+            if ((surname == null)) {
+                throw new global::System.ArgumentNullException("surname");
             }
             else {
-                command.Parameters[2].Value = ((string)(Telefon));
+                command.Parameters[1].Value = ((string)(surname));
             }
-            if ((Email == null)) {
+            if ((phone == null)) {
+                throw new global::System.ArgumentNullException("phone");
+            }
+            else {
+                command.Parameters[2].Value = ((string)(phone));
+            }
+            if ((email == null)) {
                 command.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[3].Value = ((string)(Email));
+                command.Parameters[3].Value = ((string)(email));
             }
-            command.Parameters[4].Value = ((int)(IdKlienta));
+            command.Parameters[4].Value = ((int)(id));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

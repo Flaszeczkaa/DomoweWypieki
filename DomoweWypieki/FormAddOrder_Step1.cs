@@ -71,7 +71,7 @@ namespace DomoweWypieki
             if (cb_category.SelectedValue != null && int.TryParse(cb_category.SelectedValue.ToString(), out int categoryId))
             {
                 DataView dvProducts = new DataView(this.domoweWypiekiDataSet1.OfertaCukierni);
-                dvProducts.RowFilter = $"IdKategorii = {categoryId}";
+                dvProducts.RowFilter = $"IdKategorii = {categoryId} AND (Aktywne = 1 OR Aktywne = True)";
 
                 cb_Cakes.DataSource = dvProducts;
                 cb_Cakes.DisplayMember = "Nazwa";

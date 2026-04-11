@@ -48,15 +48,26 @@
             this.btn_withdraw_from_sale = new System.Windows.Forms.Button();
             this.btn_add_cake = new System.Windows.Forms.Button();
             this.lbl_search_criteria = new System.Windows.Forms.Label();
+            this.domoweWypiekiDataSet = new DomoweWypieki.DomoweWypiekiDataSet();
+            this.ofertaCukierniBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ofertaCukierniTableAdapter = new DomoweWypieki.DomoweWypiekiDataSetTableAdapters.OfertaCukierniTableAdapter();
+            this.idProduktuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idKategoriiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nazwaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cenaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bn_Offer)).BeginInit();
             this.bn_Offer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_offer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.domoweWypiekiDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ofertaCukierniBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // bn_Offer
             // 
             this.bn_Offer.AddNewItem = this.bindingNavigatorAddNewItem;
             this.bn_Offer.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.bn_Offer.BindingSource = this.ofertaCukierniBindingSource;
             this.bn_Offer.CountItem = this.bindingNavigatorCountItem;
             this.bn_Offer.DeleteItem = null;
             this.bn_Offer.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -128,7 +139,6 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 27);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -182,11 +192,18 @@
             // dgv_offer
             // 
             this.dgv_offer.AllowUserToAddRows = false;
+            this.dgv_offer.AutoGenerateColumns = false;
             this.dgv_offer.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_offer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_offer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idProduktuDataGridViewTextBoxColumn,
+            this.idKategoriiDataGridViewTextBoxColumn,
+            this.nazwaDataGridViewTextBoxColumn,
+            this.opisDataGridViewTextBoxColumn,
+            this.cenaDataGridViewTextBoxColumn});
+            this.dgv_offer.DataSource = this.ofertaCukierniBindingSource;
             this.dgv_offer.Location = new System.Drawing.Point(27, 85);
             this.dgv_offer.Name = "dgv_offer";
-            this.dgv_offer.ReadOnly = true;
             this.dgv_offer.RowHeadersVisible = false;
             this.dgv_offer.RowHeadersWidth = 51;
             this.dgv_offer.RowTemplate.Height = 24;
@@ -249,6 +266,61 @@
             this.lbl_search_criteria.Text = "Ciasta i torty dostępne w sprzedaży";
             this.lbl_search_criteria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // domoweWypiekiDataSet
+            // 
+            this.domoweWypiekiDataSet.DataSetName = "DomoweWypiekiDataSet";
+            this.domoweWypiekiDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // ofertaCukierniBindingSource
+            // 
+            this.ofertaCukierniBindingSource.DataMember = "OfertaCukierni";
+            this.ofertaCukierniBindingSource.DataSource = this.domoweWypiekiDataSet;
+            // 
+            // ofertaCukierniTableAdapter
+            // 
+            this.ofertaCukierniTableAdapter.ClearBeforeFill = true;
+            // 
+            // idProduktuDataGridViewTextBoxColumn
+            // 
+            this.idProduktuDataGridViewTextBoxColumn.DataPropertyName = "IdProduktu";
+            this.idProduktuDataGridViewTextBoxColumn.HeaderText = "IdProduktu";
+            this.idProduktuDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idProduktuDataGridViewTextBoxColumn.Name = "idProduktuDataGridViewTextBoxColumn";
+            this.idProduktuDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idProduktuDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // idKategoriiDataGridViewTextBoxColumn
+            // 
+            this.idKategoriiDataGridViewTextBoxColumn.DataPropertyName = "IdKategorii";
+            this.idKategoriiDataGridViewTextBoxColumn.HeaderText = "IdKategorii";
+            this.idKategoriiDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idKategoriiDataGridViewTextBoxColumn.Name = "idKategoriiDataGridViewTextBoxColumn";
+            this.idKategoriiDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // nazwaDataGridViewTextBoxColumn
+            // 
+            this.nazwaDataGridViewTextBoxColumn.DataPropertyName = "Nazwa";
+            this.nazwaDataGridViewTextBoxColumn.HeaderText = "Nazwa";
+            this.nazwaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nazwaDataGridViewTextBoxColumn.Name = "nazwaDataGridViewTextBoxColumn";
+            this.nazwaDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // opisDataGridViewTextBoxColumn
+            // 
+            this.opisDataGridViewTextBoxColumn.DataPropertyName = "Opis";
+            this.opisDataGridViewTextBoxColumn.HeaderText = "Opis";
+            this.opisDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.opisDataGridViewTextBoxColumn.Name = "opisDataGridViewTextBoxColumn";
+            this.opisDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // cenaDataGridViewTextBoxColumn
+            // 
+            this.cenaDataGridViewTextBoxColumn.DataPropertyName = "Cena";
+            this.cenaDataGridViewTextBoxColumn.HeaderText = "Cena";
+            this.cenaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.cenaDataGridViewTextBoxColumn.Name = "cenaDataGridViewTextBoxColumn";
+            this.cenaDataGridViewTextBoxColumn.Width = 125;
+            // 
             // FormConfectioneryOffer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -265,10 +337,13 @@
             this.Name = "FormConfectioneryOffer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormConfectioneryOffer";
+            this.Load += new System.EventHandler(this.FormConfectioneryOffer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bn_Offer)).EndInit();
             this.bn_Offer.ResumeLayout(false);
             this.bn_Offer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_offer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.domoweWypiekiDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ofertaCukierniBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,5 +369,13 @@
         private System.Windows.Forms.Button btn_withdraw_from_sale;
         private System.Windows.Forms.Button btn_add_cake;
         private System.Windows.Forms.Label lbl_search_criteria;
+        private DomoweWypiekiDataSet domoweWypiekiDataSet;
+        private System.Windows.Forms.BindingSource ofertaCukierniBindingSource;
+        private DomoweWypiekiDataSetTableAdapters.OfertaCukierniTableAdapter ofertaCukierniTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idProduktuDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idKategoriiDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nazwaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn opisDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cenaDataGridViewTextBoxColumn;
     }
 }

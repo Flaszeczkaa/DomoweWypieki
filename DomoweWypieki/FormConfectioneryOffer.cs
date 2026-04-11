@@ -39,5 +39,12 @@ namespace DomoweWypieki
                 this.Close();
             }
         }
+
+        private void FormConfectioneryOffer_Load(object sender, EventArgs e)
+        {
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'domoweWypiekiDataSet.OfertaCukierni' . Możesz go przenieść lub usunąć.
+            this.ofertaCukierniTableAdapter.Fill(this.domoweWypiekiDataSet.OfertaCukierni);
+
+        }
     }
 }

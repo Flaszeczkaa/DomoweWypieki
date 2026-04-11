@@ -99,12 +99,6 @@
     <Compile Include="FormEditClient.Designer.cs">
       <DependentUpon>FormEditClient.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormEditOffer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormEditOffer.Designer.cs">
-      <DependentUpon>FormEditOffer.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormOrders.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,9 +131,6 @@
     <EmbeddedResource Include="FormEditClient.resx">
       <DependentUpon>FormEditClient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormEditOffer.resx">
-      <DependentUpon>FormEditOffer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormOrders.resx">
       <DependentUpon>FormOrders.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,6 +148,7 @@
     </None>
     <None Include="DomoweWypiekiDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DomoweWypiekiDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="DomoweWypiekiDataSet.xss">

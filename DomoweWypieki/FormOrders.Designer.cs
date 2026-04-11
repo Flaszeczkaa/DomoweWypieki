@@ -53,6 +53,7 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.dgv_OrderDetails = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.klienciTableAdapter1 = new DomoweWypieki.DomoweWypiekiDataSetTableAdapters.KlienciTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Orders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bnOrders)).BeginInit();
@@ -304,6 +305,10 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Szcegóły wybranego zamówienia";
             // 
+            // klienciTableAdapter1
+            // 
+            this.klienciTableAdapter1.ClearBeforeFill = true;
+            // 
             // FormOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -359,5 +364,6 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.DataGridView dgv_OrderDetails;
         private System.Windows.Forms.GroupBox groupBox1;
+        private DomoweWypiekiDataSetTableAdapters.KlienciTableAdapter klienciTableAdapter1;
     }
 }
