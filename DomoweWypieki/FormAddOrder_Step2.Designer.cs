@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.gb_OrderData = new System.Windows.Forms.GroupBox();
             this.cb_Customers = new System.Windows.Forms.ComboBox();
             this.nud_Discount = new System.Windows.Forms.NumericUpDown();
@@ -45,9 +46,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btn_CancelOrder = new System.Windows.Forms.Button();
             this.btn_AddOrder = new System.Windows.Forms.Button();
+            this.domoweWypiekiDataSet1 = new DomoweWypieki.DomoweWypiekiDataSet();
+            this.klienciTableAdapter1 = new DomoweWypieki.DomoweWypiekiDataSetTableAdapters.KlienciTableAdapter();
+            this.rodzajePlatnosciTableAdapter1 = new DomoweWypieki.DomoweWypiekiDataSetTableAdapters.RodzajePlatnosciTableAdapter();
+            this.klienciBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.rodzajePlatnosciBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gb_OrderData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Discount)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.domoweWypiekiDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.klienciBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rodzajePlatnosciBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // gb_OrderData
@@ -71,12 +80,15 @@
             // 
             // cb_Customers
             // 
+            this.cb_Customers.DataSource = this.klienciBindingSource;
+            this.cb_Customers.DisplayMember = "Imie";
             this.cb_Customers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cb_Customers.FormattingEnabled = true;
             this.cb_Customers.Location = new System.Drawing.Point(424, 42);
             this.cb_Customers.Name = "cb_Customers";
             this.cb_Customers.Size = new System.Drawing.Size(356, 33);
             this.cb_Customers.TabIndex = 0;
+            this.cb_Customers.ValueMember = "IdKlienta";
             // 
             // nud_Discount
             // 
@@ -235,6 +247,29 @@
             this.btn_AddOrder.Text = "Zatwierdź i utwórz";
             this.btn_AddOrder.UseVisualStyleBackColor = false;
             // 
+            // domoweWypiekiDataSet1
+            // 
+            this.domoweWypiekiDataSet1.DataSetName = "DomoweWypiekiDataSet";
+            this.domoweWypiekiDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // klienciTableAdapter1
+            // 
+            this.klienciTableAdapter1.ClearBeforeFill = true;
+            // 
+            // rodzajePlatnosciTableAdapter1
+            // 
+            this.rodzajePlatnosciTableAdapter1.ClearBeforeFill = true;
+            // 
+            // klienciBindingSource
+            // 
+            this.klienciBindingSource.DataMember = "Klienci";
+            this.klienciBindingSource.DataSource = this.domoweWypiekiDataSet1;
+            // 
+            // rodzajePlatnosciBindingSource
+            // 
+            this.rodzajePlatnosciBindingSource.DataMember = "RodzajePlatnosci";
+            this.rodzajePlatnosciBindingSource.DataSource = this.domoweWypiekiDataSet1;
+            // 
             // FormAddOrder_Step2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -256,6 +291,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_Discount)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.domoweWypiekiDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.klienciBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rodzajePlatnosciBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -279,5 +317,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btn_CancelOrder;
         private System.Windows.Forms.Button btn_AddOrder;
+        private DomoweWypiekiDataSet domoweWypiekiDataSet1;
+        private System.Windows.Forms.BindingSource klienciBindingSource;
+        private System.Windows.Forms.BindingSource rodzajePlatnosciBindingSource;
+        private DomoweWypiekiDataSetTableAdapters.KlienciTableAdapter klienciTableAdapter1;
+        private DomoweWypiekiDataSetTableAdapters.RodzajePlatnosciTableAdapter rodzajePlatnosciTableAdapter1;
     }
 }

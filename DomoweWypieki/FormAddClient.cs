@@ -73,9 +73,9 @@ namespace DomoweWypieki
             !string.IsNullOrWhiteSpace(txtEmail.Text))
                 {
                     //Jeśli pola nie puste, pytamy o potwierdzenie
-                    DialogResult wynik = MessageBox.Show("Czy na pewno chcesz zakończyć pracę i wrócić do menu?", "Powrót", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult result = MessageBox.Show("Czy na pewno chcesz zakończyć pracę i wrócić do menu?", "Powrót", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    if (wynik == DialogResult.Yes)
+                    if (result == DialogResult.Yes)
                     {
                         this.Close();
                     }
