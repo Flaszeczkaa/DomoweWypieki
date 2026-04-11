@@ -36,6 +36,7 @@ CREATE TABLE dbo.OfertaCukierni (
     Nazwa NVARCHAR(120) NOT NULL,
     Opis NVARCHAR(400) NULL,
     Cena DECIMAL(12,2) NOT NULL CHECK (Cena > 0),
+    Aktywne BIT NOT NULL DEFAULT 1;
     CONSTRAINT FK_OfertaCuk_Kategorie FOREIGN KEY (IdKategorii) REFERENCES dbo.Kategorie(IdKategorii)
 );
 
