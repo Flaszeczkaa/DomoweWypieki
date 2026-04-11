@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCustomers));
             this.bn_clients = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.klienciBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.domoweWypiekiDataSet = new DomoweWypieki.DomoweWypiekiDataSet();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
@@ -47,18 +49,29 @@
             this.btn_delete_customer = new System.Windows.Forms.Button();
             this.btn_add_customer = new System.Windows.Forms.Button();
             this.dgv_customers = new System.Windows.Forms.DataGridView();
+            this.idKlientaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nazwiskoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_search = new System.Windows.Forms.Button();
             this.txt_search_user = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.domoweWypiekiDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.klienciTableAdapter = new DomoweWypieki.DomoweWypiekiDataSetTableAdapters.KlienciTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.bn_clients)).BeginInit();
             this.bn_clients.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.klienciBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.domoweWypiekiDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_customers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.domoweWypiekiDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // bn_clients
             // 
             this.bn_clients.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.bn_clients.BindingSource = this.klienciBindingSource;
             this.bn_clients.CountItem = this.bindingNavigatorCountItem;
             this.bn_clients.DeleteItem = null;
             this.bn_clients.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -94,6 +107,16 @@
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(29, 24);
             this.bindingNavigatorAddNewItem.Text = "Add new";
             this.bindingNavigatorAddNewItem.Visible = false;
+            // 
+            // klienciBindingSource
+            // 
+            this.klienciBindingSource.DataMember = "Klienci";
+            this.klienciBindingSource.DataSource = this.domoweWypiekiDataSet;
+            // 
+            // domoweWypiekiDataSet
+            // 
+            this.domoweWypiekiDataSet.DataSetName = "DomoweWypiekiDataSet";
+            this.domoweWypiekiDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bindingNavigatorCountItem
             // 
@@ -185,7 +208,6 @@
             this.lbl_search_criteria.TabIndex = 27;
             this.lbl_search_criteria.Text = "Podaj  kryteria wyszukiwania: Imię, Nazwisko, E-mail";
             this.lbl_search_criteria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbl_search_criteria.Click += new System.EventHandler(this.lbl_search_criteria_Click);
             // 
             // btn_return
             // 
@@ -232,8 +254,16 @@
             // dgv_customers
             // 
             this.dgv_customers.AllowUserToAddRows = false;
+            this.dgv_customers.AutoGenerateColumns = false;
             this.dgv_customers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_customers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_customers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idKlientaDataGridViewTextBoxColumn,
+            this.imieDataGridViewTextBoxColumn,
+            this.nazwiskoDataGridViewTextBoxColumn,
+            this.telefonDataGridViewTextBoxColumn,
+            this.emailDataGridViewTextBoxColumn});
+            this.dgv_customers.DataSource = this.klienciBindingSource;
             this.dgv_customers.Location = new System.Drawing.Point(25, 226);
             this.dgv_customers.Name = "dgv_customers";
             this.dgv_customers.ReadOnly = true;
@@ -244,6 +274,51 @@
             this.dgv_customers.Size = new System.Drawing.Size(902, 281);
             this.dgv_customers.TabIndex = 23;
             this.dgv_customers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_customers_CellDoubleClick);
+            // 
+            // idKlientaDataGridViewTextBoxColumn
+            // 
+            this.idKlientaDataGridViewTextBoxColumn.DataPropertyName = "IdKlienta";
+            this.idKlientaDataGridViewTextBoxColumn.HeaderText = "IdKlienta";
+            this.idKlientaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idKlientaDataGridViewTextBoxColumn.Name = "idKlientaDataGridViewTextBoxColumn";
+            this.idKlientaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idKlientaDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // imieDataGridViewTextBoxColumn
+            // 
+            this.imieDataGridViewTextBoxColumn.DataPropertyName = "Imie";
+            this.imieDataGridViewTextBoxColumn.HeaderText = "Imie";
+            this.imieDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.imieDataGridViewTextBoxColumn.Name = "imieDataGridViewTextBoxColumn";
+            this.imieDataGridViewTextBoxColumn.ReadOnly = true;
+            this.imieDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // nazwiskoDataGridViewTextBoxColumn
+            // 
+            this.nazwiskoDataGridViewTextBoxColumn.DataPropertyName = "Nazwisko";
+            this.nazwiskoDataGridViewTextBoxColumn.HeaderText = "Nazwisko";
+            this.nazwiskoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nazwiskoDataGridViewTextBoxColumn.Name = "nazwiskoDataGridViewTextBoxColumn";
+            this.nazwiskoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nazwiskoDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // telefonDataGridViewTextBoxColumn
+            // 
+            this.telefonDataGridViewTextBoxColumn.DataPropertyName = "Telefon";
+            this.telefonDataGridViewTextBoxColumn.HeaderText = "Telefon";
+            this.telefonDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.telefonDataGridViewTextBoxColumn.Name = "telefonDataGridViewTextBoxColumn";
+            this.telefonDataGridViewTextBoxColumn.ReadOnly = true;
+            this.telefonDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            this.emailDataGridViewTextBoxColumn.Width = 125;
             // 
             // btn_search
             // 
@@ -286,6 +361,15 @@
             this.label1.Text = "ZARZĄDZANIE KLIENTAMI";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // domoweWypiekiDataSetBindingSource
+            // 
+            this.domoweWypiekiDataSetBindingSource.DataSource = this.domoweWypiekiDataSet;
+            this.domoweWypiekiDataSetBindingSource.Position = 0;
+            // 
+            // klienciTableAdapter
+            // 
+            this.klienciTableAdapter.ClearBeforeFill = true;
+            // 
             // FormCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -306,10 +390,14 @@
             this.Name = "FormCustomers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormClients";
+            this.Load += new System.EventHandler(this.FormCustomers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bn_clients)).EndInit();
             this.bn_clients.ResumeLayout(false);
             this.bn_clients.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.klienciBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.domoweWypiekiDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_customers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.domoweWypiekiDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -338,5 +426,14 @@
         private System.Windows.Forms.TextBox txt_search_user;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.BindingSource domoweWypiekiDataSetBindingSource;
+        private DomoweWypiekiDataSet domoweWypiekiDataSet;
+        private System.Windows.Forms.BindingSource klienciBindingSource;
+        private DomoweWypiekiDataSetTableAdapters.KlienciTableAdapter klienciTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idKlientaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn imieDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nazwiskoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telefonDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
     }
 }

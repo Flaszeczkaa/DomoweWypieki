@@ -13,9 +13,6 @@ namespace DomoweWypieki
 {
     public partial class FormAddOrder_Step1 : Form
     {
-        private string connectionString = @"Data Source=localhost;Initial Catalog=DomoweWypieki;Integrated Security=True";
-
-        private DataSet dsAddOrder = new DataSet();
 
         public FormAddOrder_Step1()
         {

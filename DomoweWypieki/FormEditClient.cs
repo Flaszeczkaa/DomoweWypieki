@@ -14,80 +14,56 @@ namespace DomoweWypieki
 {
     public partial class FormEditClient : Form
     {
-        private int clientId;
-        string connectionString = @"Data Source=localhost;Initial Catalog=DomoweWypieki;Integrated Security=True";
-
-        // Konstruktor przyjmujący dane klienta
-        public FormEditClient(int id, string imie, string nazwisko, string email, string telefon)
+        private int CustomerId;
+        public FormEditClient(int id, string firstName, string lastName, string phone, string email)
         {
             InitializeComponent();
-            clientId = id;
-            txtFirstName.Text = imie;
-            txtLastName.Text = nazwisko;
-            txtEmail.Text = email;
-            txtPhone.Text = telefon;
-        }
-
-        public FormEditClient()
-        {
-            InitializeComponent();
+            this.CustomerId = id;
+            this.txtFirstName.Text = firstName;
+            this.txtLastName.Text = lastName;
+            this.txtPhone.Text = phone;
+            this.txtEmail.Text = email;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // A. Czy pola nie są puste?
-            if (string.IsNullOrWhiteSpace(txtFirstName.Text) || string.IsNullOrWhiteSpace(txtLastName.Text))
+            string firstName = txtFirstName.Text.Trim();
+            string lastName = txtLastName.Text.Trim();
+            string phone = txtPhone.Text.Trim();
+            string email = txtEmail.Text.Trim();
+
+            //Walidacja danych
+            if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) || string.IsNullOrWhiteSpace(phone))
             {
-                MessageBox.Show("Imię i nazwisko są obowiązkowe!");
+                MessageBox.Show("Pola 'Imię', 'Nazwisko' i 'Numer Telefonu' nie mogą być puste!", "Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // B. Walidacja Telefonu (Dokładnie 9 cyfr)
-            // ^ - początek, \d{9} - dziewięć cyfr, $ - koniec
-            if (!Regex.IsMatch(txtPhone.Text.Trim(), @"^\d{9}$"))
+            if (!System.Text.RegularExpressions.Regex.IsMatch(phone, @"^\d{9}$"))
             {
-                MessageBox.Show("Numer telefonu musi składać się z dokładnie 9 cyfr!", "Błąd formatu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtPhone.Focus();
+                MessageBox.Show("Numer telefonu musi składać się dokładnie z 9 cyfr!", "Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // C. Walidacja E-mail (Standardowy wzorzec)
-            string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-            if (!Regex.IsMatch(txtEmail.Text.Trim(), emailPattern))
+            if (!string.IsNullOrWhiteSpace(email) && !email.Contains("@"))
             {
-                MessageBox.Show("Wprowadź poprawny adres e-mail (np. nazwa@domena.pl)!", "Błąd formatu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtEmail.Focus();
+                MessageBox.Show("Podaj poprawny adres e-mail (musi zawierać znak '@').", "Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+            //Update danych w bazie
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    string sql = @"UPDATE Klienci 
-                               SET Imie = @imie, Nazwisko = @nazwisko, Email = @email, Telefon = @telefon 
-                               WHERE IdKlienta = @id";
+                DomoweWypiekiDataSetTableAdapters.KlienciTableAdapter adapter = new DomoweWypiekiDataSetTableAdapters.KlienciTableAdapter();
 
-                    using (SqlCommand cmd = new SqlCommand(sql, connection))
-                    {
-                        cmd.Parameters.AddWithValue("@imie", txtFirstName.Text.Trim());
-                        cmd.Parameters.AddWithValue("@nazwisko", txtLastName.Text.Trim());
-                        cmd.Parameters.AddWithValue("@email", txtEmail.Text.Trim());
-                        cmd.Parameters.AddWithValue("@telefon", txtPhone.Text.Trim());
-                        cmd.Parameters.AddWithValue("@id", clientId);
+                adapter.UpdateClientQuery(firstName, lastName, phone, email, CustomerId);
 
-                        connection.Open();
-                        cmd.ExecuteNonQuery();
-
-                        MessageBox.Show("Dane klienta zostały zaktualizowane!");
-                        this.DialogResult = DialogResult.OK;
-                        this.Close();
-                    }
-                }
+                MessageBox.Show("Dane klienta zaktualizowane pomyślnie!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Błąd edycji: " + ex.Message);
+                MessageBox.Show("Błąd podczas aktualizacji danych: " + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -99,16 +75,6 @@ namespace DomoweWypieki
             {
                 this.Close();
             }
-        }
-
-        private void FormEditClient_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

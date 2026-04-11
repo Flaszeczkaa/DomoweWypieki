@@ -21,84 +21,70 @@ namespace DomoweWypieki
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // A. Czy pola nie są puste?
-            if (string.IsNullOrWhiteSpace(txtFirstName.Text) || string.IsNullOrWhiteSpace(txtLastName.Text))
+            string name = txtFirstName.Text.Trim();
+            string surname = txtLastName.Text.Trim();
+            string email = txtEmail.Text.Trim();
+            string phone_number = txtPhone.Text.Trim();
+
+            //Walidacja danych
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(surname) || string.IsNullOrWhiteSpace(phone_number))
             {
-                MessageBox.Show("Imię i nazwisko są obowiązkowe!");
+                MessageBox.Show("Pola 'Imię', 'Nazwisko' i 'Numer Telefonu' nie mogą być puste!", "Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // B. Walidacja Telefonu (Dokładnie 9 cyfr)
-            // ^ - początek, \d{9} - dziewięć cyfr, $ - koniec
-            if (!Regex.IsMatch(txtPhone.Text.Trim(), @"^\d{9}$"))
+            if (!System.Text.RegularExpressions.Regex.IsMatch(phone_number, @"^\d{9}$"))
             {
-                MessageBox.Show("Numer telefonu musi składać się z dokładnie 9 cyfr!", "Błąd formatu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtPhone.Focus();
+                MessageBox.Show("Numer telefonu musi składać się dokładnie z 9 cyfr!", "Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // C. Walidacja E-mail (Standardowy wzorzec)
-            string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-            if (!Regex.IsMatch(txtEmail.Text.Trim(), emailPattern))
+            if (!string.IsNullOrWhiteSpace(email))
             {
-                MessageBox.Show("Wprowadź poprawny adres e-mail (np. nazwa@domena.pl)!", "Błąd formatu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtEmail.Focus();
-                return;
+                if (!email.Contains("@"))
+                {
+                    MessageBox.Show("Podaj poprawny adres e-mail (musi zawierać znak '@').", "Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
             }
 
-            // --- 2. ZAPIS DO BAZY (ADO.NET) ---
-            string connectionString = @"Data Source=localhost;Initial Catalog=DomoweWypieki;Integrated Security=True";
-
+            //Zapis do bazy danych
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    string sql = @"INSERT INTO Klienci (Imie, Nazwisko, Email, Telefon) 
-                           VALUES (@imie, @nazwisko, @email, @telefon)";
+                DomoweWypiekiDataSetTableAdapters.KlienciTableAdapter clientsAdapter = new DomoweWypiekiDataSetTableAdapters.KlienciTableAdapter();
 
-                    using (SqlCommand cmd = new SqlCommand(sql, connection))
-                    {
-                        cmd.Parameters.AddWithValue("@imie", txtFirstName.Text.Trim());
-                        cmd.Parameters.AddWithValue("@nazwisko", txtLastName.Text.Trim());
-                        cmd.Parameters.AddWithValue("@email", txtEmail.Text.Trim());
-                        cmd.Parameters.AddWithValue("@telefon", txtPhone.Text.Trim());
+                clientsAdapter.Insert(name, surname, phone_number, email);
 
-                        connection.Open();
-                        cmd.ExecuteNonQuery();
+                MessageBox.Show("Użytkownik został pomyślnie dodany do bazy!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        MessageBox.Show("Klient dodany pomyślnie!");
-                        this.DialogResult = DialogResult.OK;
-                        this.Close();
-                    }
-                }
+                this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Błąd zapisu: " + ex.Message);
+                MessageBox.Show("Wystąpił błąd podczas komunikacji z bazą: " + ex.Message, "Krytyczny błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(txtFirstName.Text) ||
-        !string.IsNullOrWhiteSpace(txtLastName.Text) ||
-        !string.IsNullOrWhiteSpace(txtEmail.Text))
-            {
-                // 2. Jeśli pola nie są puste, pytamy o potwierdzenie
-                DialogResult wynik = MessageBox.Show("Czy na pewno chcesz zakończyć pracę i wrócić do menu?", "Powrót", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (wynik == DialogResult.Yes)
+            !string.IsNullOrWhiteSpace(txtLastName.Text) ||
+            !string.IsNullOrWhiteSpace(txtPhone.Text) ||
+            !string.IsNullOrWhiteSpace(txtEmail.Text))
                 {
+                    //Jeśli pola nie puste, pytamy o potwierdzenie
+                    DialogResult wynik = MessageBox.Show("Czy na pewno chcesz zakończyć pracę i wrócić do menu?", "Powrót", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (wynik == DialogResult.Yes)
+                    {
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    //Jeśli pola puste, zamykamy bez pytania
                     this.Close();
                 }
             }
-            else
-            {
-                // 3. Jeśli pola są puste, zamykamy bez pytania
-                this.Close();
-            }
-        }
-
-   
     }
 }
