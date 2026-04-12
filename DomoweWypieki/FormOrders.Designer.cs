@@ -37,7 +37,6 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_return = new System.Windows.Forms.Button();
             this.lbl_search_criteria = new System.Windows.Forms.Label();
-            this.bsOrders = new System.Windows.Forms.BindingSource(this.components);
             this.bnOrders = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -54,12 +53,13 @@
             this.dgv_OrderDetails = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.klienciTableAdapter1 = new DomoweWypieki.DomoweWypiekiDataSetTableAdapters.KlienciTableAdapter();
+            this.bsOrders = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Orders)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bnOrders)).BeginInit();
             this.bnOrders.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_OrderDetails)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsOrders)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -109,6 +109,7 @@
             this.dgv_Orders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_Orders.Size = new System.Drawing.Size(902, 218);
             this.dgv_Orders.TabIndex = 13;
+            this.dgv_Orders.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Orders_CellContentClick);
             // 
             // btn_cancel
             // 
@@ -333,12 +334,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormOrders";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Orders)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bnOrders)).EndInit();
             this.bnOrders.ResumeLayout(false);
             this.bnOrders.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_OrderDetails)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bsOrders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

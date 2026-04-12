@@ -110,5 +110,10 @@ namespace DomoweWypieki
                 this.klienciTableAdapter.Fill(this.domoweWypiekiDataSet.Klienci);
             }
         }
+
+        private void dgv_customers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

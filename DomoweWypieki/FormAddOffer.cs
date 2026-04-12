@@ -117,5 +117,50 @@ namespace DomoweWypieki
                 MessageBox.Show("Błąd podczas zapisywania: " + ex.Message);
             }
         }
+
+        private void comboBox_category_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_UsersInfo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown_price_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtOpis_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtoffername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_surename_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_name_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

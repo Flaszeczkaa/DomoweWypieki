@@ -21,7 +21,27 @@ namespace DomoweWypieki
 
         private void dgv_offer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0)
+            {
+                //Pobieramy dane z zaznaczonego wiersza
+                DataRowView currentRow = (DataRowView)ofertaCukierniBindingSource.Current;
 
+                int id = (int)currentRow["IdProduktu"];
+                int idKategorii = (int)currentRow["IdKategorii"];
+                string nazwa = currentRow["Nazwa"].ToString();
+                string opis = currentRow["Opis"].ToString();
+                decimal cena = (decimal)currentRow["Cena"];
+
+                FormEditOffer editForm = new FormEditOffer(id, idKategorii, nazwa, opis, cena);
+
+                editForm.StartPosition = FormStartPosition.Manual;
+                editForm.Location = this.Location;
+
+                if (editForm.ShowDialog() == DialogResult.OK)
+                {
+                    this.ofertaCukierniTableAdapter.Fill(this.domoweWypiekiDataSet.OfertaCukierni);
+                }
+            }
         }
 
         private void btn_add_cake_Click(object sender, EventArgs e)
@@ -121,11 +141,9 @@ namespace DomoweWypieki
             {
                 var row = rowView.Row as DomoweWypiekiDataSet.OfertaCukierniRow;
 
-                // Jeśli flaga Aktywne to false (0), zmień kolor czcionki całego wiersza
                 if (row != null && !row.Aktywne)
                 {
                     e.CellStyle.ForeColor = Color.Red;
-                    // Opcjonalnie można zmienić też styl czcionki na przekreślenie lub pogrubienie
                     e.CellStyle.Font = new Font(dgv_offer.Font, FontStyle.Bold);
                 }
             }
