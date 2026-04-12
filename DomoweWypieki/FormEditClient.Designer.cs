@@ -61,7 +61,7 @@
             this.lbl_UsersInfo.AutoSize = true;
             this.lbl_UsersInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lbl_UsersInfo.ForeColor = System.Drawing.Color.Black;
-            this.lbl_UsersInfo.Location = new System.Drawing.Point(168, 117);
+            this.lbl_UsersInfo.Location = new System.Drawing.Point(122, 119);
             this.lbl_UsersInfo.Name = "lbl_UsersInfo";
             this.lbl_UsersInfo.Size = new System.Drawing.Size(682, 29);
             this.lbl_UsersInfo.TabIndex = 38;

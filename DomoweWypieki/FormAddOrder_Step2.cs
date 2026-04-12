@@ -112,6 +112,22 @@ namespace DomoweWypieki
                 return;
             }
 
+            //Walidacja - Data realizacji musi być późniejsza lub równa dacie złożenia
+            if (dtp_RealizationDate.Value.Date < dtp_OrderDate.Value.Date)
+            {
+                MessageBox.Show("Data realizacji nie może być wcześniejsza niż data złożenia zamówienia!",
+                                "Błąd daty", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Przerywamy zapisywanie
+            }
+
+            // Dodatkowo: sprawdzenie czy data realizacji nie jest z przeszłości
+            if (dtp_RealizationDate.Value.Date < DateTime.Now.Date)
+            {
+                MessageBox.Show("Data realizacji nie może być datą z przeszłości!",
+                                "Błąd daty", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             //Zapisywanie danych do bazy - wszystko w jednej transakcji
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -191,6 +207,11 @@ namespace DomoweWypieki
                 this.DialogResult = DialogResult.Abort;
                 this.Close();
             }
+        }
+
+        private void btn_AddOrder_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

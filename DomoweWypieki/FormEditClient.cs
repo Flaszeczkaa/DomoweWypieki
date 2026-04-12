@@ -15,10 +15,22 @@ namespace DomoweWypieki
     public partial class FormEditClient : Form
     {
         private int CustomerId;
+        private string originalFirstName;
+        private string originalLastName;
+        private string originalPhone;
+        private string originalEmail;
         public FormEditClient(int id, string firstName, string lastName, string phone, string email)
         {
             InitializeComponent();
             this.CustomerId = id;
+
+            // Zapamiętujemy stan początkowy
+            this.originalFirstName = firstName;
+            this.originalLastName = lastName;
+            this.originalPhone = phone;
+            this.originalEmail = email ?? "";
+
+            
             this.txtFirstName.Text = firstName;
             this.txtLastName.Text = lastName;
             this.txtPhone.Text = phone;
@@ -31,6 +43,18 @@ namespace DomoweWypieki
             string lastName = txtLastName.Text.Trim();
             string phone = txtPhone.Text.Trim();
             string email = txtEmail.Text.Trim();
+
+            bool hasChanged = firstName != originalFirstName ||
+                      lastName != originalLastName ||
+                      phone != originalPhone ||
+                      email != originalEmail;
+
+            if (!hasChanged)
+            {
+                // Jeśli nie wprowadzono żadnych zmian, po prostu zamknij formularz
+                this.Close();
+                return;
+            }
 
             //Walidacja danych
             if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) || string.IsNullOrWhiteSpace(phone))

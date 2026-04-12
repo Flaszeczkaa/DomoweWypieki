@@ -121,8 +121,8 @@
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(38, 24);
-            this.bindingNavigatorCountItem.Text = "z {0}";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(45, 24);
+            this.bindingNavigatorCountItem.Text = "of {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
             // bindingNavigatorMoveFirstItem
@@ -255,6 +255,7 @@
             // 
             this.dgv_customers.AllowUserToAddRows = false;
             this.dgv_customers.AutoGenerateColumns = false;
+            this.dgv_customers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_customers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_customers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_customers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -282,7 +283,6 @@
             this.idKlientaDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.idKlientaDataGridViewTextBoxColumn.Name = "idKlientaDataGridViewTextBoxColumn";
             this.idKlientaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idKlientaDataGridViewTextBoxColumn.Width = 125;
             // 
             // imieDataGridViewTextBoxColumn
             // 
@@ -291,7 +291,6 @@
             this.imieDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.imieDataGridViewTextBoxColumn.Name = "imieDataGridViewTextBoxColumn";
             this.imieDataGridViewTextBoxColumn.ReadOnly = true;
-            this.imieDataGridViewTextBoxColumn.Width = 125;
             // 
             // nazwiskoDataGridViewTextBoxColumn
             // 
@@ -300,7 +299,6 @@
             this.nazwiskoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.nazwiskoDataGridViewTextBoxColumn.Name = "nazwiskoDataGridViewTextBoxColumn";
             this.nazwiskoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nazwiskoDataGridViewTextBoxColumn.Width = 125;
             // 
             // telefonDataGridViewTextBoxColumn
             // 
@@ -309,7 +307,6 @@
             this.telefonDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.telefonDataGridViewTextBoxColumn.Name = "telefonDataGridViewTextBoxColumn";
             this.telefonDataGridViewTextBoxColumn.ReadOnly = true;
-            this.telefonDataGridViewTextBoxColumn.Width = 125;
             // 
             // emailDataGridViewTextBoxColumn
             // 
@@ -318,7 +315,6 @@
             this.emailDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
             this.emailDataGridViewTextBoxColumn.ReadOnly = true;
-            this.emailDataGridViewTextBoxColumn.Width = 125;
             // 
             // btn_search
             // 

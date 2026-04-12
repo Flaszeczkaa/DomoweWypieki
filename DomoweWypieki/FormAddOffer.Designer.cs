@@ -34,13 +34,13 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtOpis = new System.Windows.Forms.TextBox();
             this.txtoffername = new System.Windows.Forms.TextBox();
             this.lbl_surename = new System.Windows.Forms.Label();
             this.lbl_name = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.comboBox_category = new System.Windows.Forms.ComboBox();
+            this.numericUpDown_price = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_price)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -86,6 +86,7 @@
             this.btnSave.TabIndex = 47;
             this.btnSave.Text = "Dodaj ofertę";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label3
             // 
@@ -107,14 +108,14 @@
             this.label2.TabIndex = 45;
             this.label2.Text = "Podaj opis";
             // 
-            // txtEmail
+            // txtOpis
             // 
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.txtEmail.Location = new System.Drawing.Point(655, 214);
-            this.txtEmail.Multiline = true;
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(265, 184);
-            this.txtEmail.TabIndex = 44;
+            this.txtOpis.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txtOpis.Location = new System.Drawing.Point(655, 214);
+            this.txtOpis.Multiline = true;
+            this.txtOpis.Name = "txtOpis";
+            this.txtOpis.Size = new System.Drawing.Size(265, 184);
+            this.txtOpis.TabIndex = 44;
             // 
             // txtoffername
             // 
@@ -144,36 +145,41 @@
             this.lbl_name.TabIndex = 40;
             this.lbl_name.Text = "Podaj rodzaj oferty:";
             // 
-            // comboBox1
+            // comboBox_category
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(246, 214);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(225, 33);
-            this.comboBox1.TabIndex = 50;
+            this.comboBox_category.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.comboBox_category.FormattingEnabled = true;
+            this.comboBox_category.Location = new System.Drawing.Point(246, 214);
+            this.comboBox_category.Name = "comboBox_category";
+            this.comboBox_category.Size = new System.Drawing.Size(225, 33);
+            this.comboBox_category.TabIndex = 50;
             // 
-            // numericUpDown1
+            // numericUpDown_price
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.numericUpDown1.Location = new System.Drawing.Point(246, 345);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(225, 30);
-            this.numericUpDown1.TabIndex = 51;
+            this.numericUpDown_price.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.numericUpDown_price.Location = new System.Drawing.Point(246, 345);
+            this.numericUpDown_price.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDown_price.Name = "numericUpDown_price";
+            this.numericUpDown_price.Size = new System.Drawing.Size(225, 30);
+            this.numericUpDown_price.TabIndex = 51;
             // 
             // FormAddOffer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(956, 571);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.numericUpDown_price);
+            this.Controls.Add(this.comboBox_category);
             this.Controls.Add(this.lbl_UsersInfo);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.txtOpis);
             this.Controls.Add(this.txtoffername);
             this.Controls.Add(this.lbl_surename);
             this.Controls.Add(this.lbl_name);
@@ -183,7 +189,7 @@
             this.Name = "FormAddOffer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormAddOffer";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_price)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,11 +203,11 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox txtOpis;
         private System.Windows.Forms.TextBox txtoffername;
         private System.Windows.Forms.Label lbl_surename;
         private System.Windows.Forms.Label lbl_name;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.ComboBox comboBox_category;
+        private System.Windows.Forms.NumericUpDown numericUpDown_price;
     }
 }

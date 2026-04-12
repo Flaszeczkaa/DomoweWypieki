@@ -90,10 +90,12 @@
             this.btn_search.TabIndex = 12;
             this.btn_search.Text = "Szukaj";
             this.btn_search.UseVisualStyleBackColor = false;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // dgv_Orders
             // 
             this.dgv_Orders.AllowUserToAddRows = false;
+            this.dgv_Orders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_Orders.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgv_Orders.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_Orders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -121,6 +123,7 @@
             this.btn_cancel.TabIndex = 15;
             this.btn_cancel.Text = "Anuluj zamówienie";
             this.btn_cancel.UseVisualStyleBackColor = false;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // btn_return
             // 
@@ -194,8 +197,8 @@
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(38, 28);
-            this.bindingNavigatorCountItem.Text = "z {0}";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(45, 28);
+            this.bindingNavigatorCountItem.Text = "of {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
             // bindingNavigatorMoveFirstItem
@@ -279,6 +282,7 @@
             // dgv_OrderDetails
             // 
             this.dgv_OrderDetails.AllowUserToAddRows = false;
+            this.dgv_OrderDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_OrderDetails.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgv_OrderDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_OrderDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -303,7 +307,7 @@
             this.groupBox1.Size = new System.Drawing.Size(897, 178);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Szcegóły wybranego zamówienia";
+            this.groupBox1.Text = "Szczegóły wybranego zamówienia";
             // 
             // klienciTableAdapter1
             // 
