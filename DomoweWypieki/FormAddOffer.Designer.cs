@@ -63,7 +63,7 @@
             this.lbl_UsersInfo.Size = new System.Drawing.Size(462, 29);
             this.lbl_UsersInfo.TabIndex = 49;
             this.lbl_UsersInfo.Text = "FORMULARZ DODAWANIA OFERTY";
-            this.lbl_UsersInfo.Click += new System.EventHandler(this.lbl_UsersInfo_Click);
+         
             // 
             // btnCancel
             // 
@@ -98,7 +98,7 @@
             this.label3.Size = new System.Drawing.Size(120, 25);
             this.label3.TabIndex = 46;
             this.label3.Text = "Podaj cenę";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+           
             // 
             // label2
             // 
@@ -109,7 +109,7 @@
             this.label2.Size = new System.Drawing.Size(113, 25);
             this.label2.TabIndex = 45;
             this.label2.Text = "Podaj opis";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+           
             // 
             // txtOpis
             // 
@@ -119,7 +119,7 @@
             this.txtOpis.Name = "txtOpis";
             this.txtOpis.Size = new System.Drawing.Size(265, 184);
             this.txtOpis.TabIndex = 44;
-            this.txtOpis.TextChanged += new System.EventHandler(this.txtOpis_TextChanged);
+       
             // 
             // txtoffername
             // 
@@ -128,7 +128,7 @@
             this.txtoffername.Name = "txtoffername";
             this.txtoffername.Size = new System.Drawing.Size(225, 30);
             this.txtoffername.TabIndex = 42;
-            this.txtoffername.TextChanged += new System.EventHandler(this.txtoffername_TextChanged);
+          
             // 
             // lbl_surename
             // 
@@ -139,7 +139,7 @@
             this.lbl_surename.Size = new System.Drawing.Size(135, 25);
             this.lbl_surename.TabIndex = 41;
             this.lbl_surename.Text = "Podaj nazwę";
-            this.lbl_surename.Click += new System.EventHandler(this.lbl_surename_Click);
+            
             // 
             // lbl_name
             // 
@@ -150,7 +150,7 @@
             this.lbl_name.Size = new System.Drawing.Size(199, 25);
             this.lbl_name.TabIndex = 40;
             this.lbl_name.Text = "Podaj rodzaj oferty:";
-            this.lbl_name.Click += new System.EventHandler(this.lbl_name_Click);
+          
             // 
             // comboBox_category
             // 
@@ -160,7 +160,7 @@
             this.comboBox_category.Name = "comboBox_category";
             this.comboBox_category.Size = new System.Drawing.Size(225, 33);
             this.comboBox_category.TabIndex = 50;
-            this.comboBox_category.SelectedIndexChanged += new System.EventHandler(this.comboBox_category_SelectedIndexChanged);
+          
             // 
             // numericUpDown_price
             // 
@@ -174,7 +174,7 @@
             this.numericUpDown_price.Name = "numericUpDown_price";
             this.numericUpDown_price.Size = new System.Drawing.Size(225, 30);
             this.numericUpDown_price.TabIndex = 51;
-            this.numericUpDown_price.ValueChanged += new System.EventHandler(this.numericUpDown_price_ValueChanged);
+           
             // 
             // FormAddOffer
             // 

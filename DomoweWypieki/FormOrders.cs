@@ -10,11 +10,11 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Configuration;
 
-
 namespace DomoweWypieki
 {
     public partial class FormOrders : Form
     {
+
         private string connectionString = ConfigurationManager.ConnectionStrings["DomoweWypiekiConn"].ConnectionString;
 
         private DataSet dsOrders;
@@ -31,6 +31,7 @@ namespace DomoweWypieki
         {
             LoadData();
 
+            // Podpięcie zdarzeń do obsługi ComboBoxa 
             dgv_Orders.CurrentCellDirtyStateChanged += dgv_Orders_CurrentCellDirtyStateChanged;
             dgv_Orders.CellValueChanged += dgv_Orders_CellValueChanged;
             dgv_Orders.DataError += dgv_Orders_DataError;
@@ -56,10 +57,11 @@ namespace DomoweWypieki
                     int newStatusId = Convert.ToInt32(statusValue);
                     int orderId = Convert.ToInt32(orderIdValue);
 
-                    // --- TWOJA LOGIKA BLOKADY ---
+                    // Blokada zmiany na "Anulowane" 
                     if (newStatusId == 5) // 5 to ID statusu 'Anulowane'
                     {
                         DataRowView row = (DataRowView)bsOrders.Current;
+
                         // Sprawdzamy stan tekstowy sprzed zmiany zapisu
                         if (row["StatusTekst"].ToString() != "Przyjęte")
                         {
@@ -67,12 +69,13 @@ namespace DomoweWypieki
                                 "\nUżyj przycisku 'Anuluj zamówienie' dla poprawnych operacji.",
                                 "Blokada zmiany", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                            // Cofamy zmianę w tabeli w pamięci
+                            // Cofamy zmianę w tabeli 
                             row.Row.RejectChanges();
                             return;
                         }
                     }
 
+                    // Jeśli wszystko ok, wysyłamy do bazy
                     ZaktualizujStatusWBazie(orderId, newStatusId);
                 }
             }
@@ -82,6 +85,7 @@ namespace DomoweWypieki
         {
             try
             {
+                // Update
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     string sql = "UPDATE Zamowienia SET IdStatusu = @idStatusu WHERE IdZamowienia = @idZamowienia";
@@ -95,7 +99,7 @@ namespace DomoweWypieki
                     }
                 }
 
-                // Aktualizacja powiodła się, warto zaktualizować pole StatusTekst w pamięci żeby działała wyszukiwarka
+                // Aktualizacja powiodła się, synchronizujemy pole StatusTekst 
                 DataRowView currentRow = (DataRowView)bsOrders.Current;
                 DataTable dtStatusy = dsOrders.Tables["Statusy"];
                 DataRow[] statusRow = dtStatusy.Select($"IdStatusu = {newStatusId}");
@@ -111,7 +115,7 @@ namespace DomoweWypieki
             }
         }
 
-        // Zabezpieczenie na wypadek błędów powiązań danych w DGV
+        // Zabezpieczenie na wypadek błędów powiązań danych
         private void dgv_Orders_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             e.ThrowException = false;
@@ -125,12 +129,12 @@ namespace DomoweWypieki
 
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    // 1. POBRANIE SŁOWNIKA STATUSÓW (dla ComboBoxa)
+                    // Słownik dla ComboBoxa
                     string sqlStatuses = "SELECT IdStatusu, NazwaStatusu FROM StatusyZamowien";
                     SqlDataAdapter adapterStatuses = new SqlDataAdapter(sqlStatuses, conn);
                     adapterStatuses.Fill(dsOrders, "Statusy");
 
-                    // 2. MODYFIKACJA ZAPYTANIA O ZAMÓWIENIA (dodano z.IdStatusu oraz StatusTekst dla wyszukiwarki)
+                    // Lista Zamówień
                     string sqlOrders = @"SELECT z.IdZamowienia, k.Imie + ' ' + k.Nazwisko as Klient, 
                                             z.IdStatusu, s.NazwaStatusu as StatusTekst, z.DataZlozenia, z.DataRealizacji, z.RabatProcent 
                                          FROM Zamowienia z 
@@ -140,31 +144,30 @@ namespace DomoweWypieki
                     adapterOrders = new SqlDataAdapter(sqlOrders, conn);
                     adapterOrders.Fill(dsOrders, "Zamowienia");
 
-                    // zapytanie o konkretne ciasta w zamówieniu
+                    // Szczegóły Koszyków 
                     string sqlDetails = @"SELECT pz.IdZamowienia, o.Nazwa as Produkt, pz.Ilosc, 
-                                         pz.CenaBazowa, pz.CenaRazem 
+                                         pz.CenaBazowa, pz.CenaRazem, pz.ProsbaKlienta, pz.SumaDoplat
                                          FROM PozycjeZamowienia pz 
                                          JOIN OfertaCukierni o ON pz.IdProduktu = o.IdProduktu";
 
                     adapterDetails = new SqlDataAdapter(sqlDetails, conn);
                     adapterDetails.Fill(dsOrders, "Pozycje");
 
-                    //Tworzenie relacji w pamięci, łączy zamówienia ze szczegółami po kolumnie IdZamowienia
                     DataRelation relation = new DataRelation("OrderDetails",
                         dsOrders.Tables["Zamowienia"].Columns["IdZamowienia"],
                         dsOrders.Tables["Pozycje"].Columns["IdZamowienia"]);
                     dsOrders.Relations.Add(relation);
 
-                    bsOrders.DataSource = dsOrders; // Źródło danych dla nawigatora i tabeli głównej
+                    bsOrders.DataSource = dsOrders;
                     bsOrders.DataMember = "Zamowienia";
 
                     dgv_Orders.DataSource = bsOrders;
-                    bnOrders.BindingSource = bsOrders;// Podpięcie nawigatora
+                    bnOrders.BindingSource = bsOrders;
 
                     // Logika dynamicznego odświeżania szczegółów
                     BindingSource bsDetails = new BindingSource();
                     bsDetails.DataSource = bsOrders;
-                    bsDetails.DataMember = "OrderDetails";
+                    bsDetails.DataMember = "OrderDetails"; // Podpinamy do Relacji
 
                     dgv_OrderDetails.DataSource = bsDetails;
                 }
@@ -189,36 +192,32 @@ namespace DomoweWypieki
         private void btn_search_Click(object sender, EventArgs e)
         {
             string phrase = txt_search_user.Text.Trim();
-            // Filtrowanie po stronie BindingSource (bez ponownego odpytywania bazy - Disconnected)
+            // Filtrowanie 
             if (string.IsNullOrEmpty(phrase))
                 bsOrders.RemoveFilter();
             else
                 bsOrders.Filter = $"Klient LIKE '%{phrase}%' OR StatusTekst LIKE '%{phrase}%'";
         }
+
         private void UstawWyglad()
         {
             if (dgv_Orders.Columns.Count > 0)
             {
-                // Ukrywamy kolumny z ID i starą tekstową kolumnę, która służy tylko do filtra
                 if (dgv_Orders.Columns.Contains("IdStatusu")) dgv_Orders.Columns["IdStatusu"].Visible = false;
                 if (dgv_Orders.Columns.Contains("StatusTekst")) dgv_Orders.Columns["StatusTekst"].Visible = false;
 
-                // Tworzymy nową kolumnę z ComboBoxem (jeśli jeszcze jej nie ma)
                 if (!dgv_Orders.Columns.Contains("StatusCombo"))
                 {
                     DataGridViewComboBoxColumn comboCol = new DataGridViewComboBoxColumn();
                     comboCol.Name = "StatusCombo";
                     comboCol.HeaderText = "Status";
 
-                    // Konfiguracja źródła danych dla ComboBoxa
                     comboCol.DataSource = dsOrders.Tables["Statusy"];
-                    comboCol.DisplayMember = "NazwaStatusu"; // to co widzi użytkownik
-                    comboCol.ValueMember = "IdStatusu";      // to co idzie do bazy (wartość ID)
-                    comboCol.DataPropertyName = "IdStatusu"; // powiązanie z naszą tabelą zamówień
+                    comboCol.DisplayMember = "NazwaStatusu";
+                    comboCol.ValueMember = "IdStatusu";
+                    comboCol.DataPropertyName = "IdStatusu";
+                    comboCol.FlatStyle = FlatStyle.Flat;
 
-                    comboCol.FlatStyle = FlatStyle.Flat; // Lepszy wygląd
-
-                    // Wstawiamy kolumnę na 3 pozycję (indeks 2)
                     dgv_Orders.Columns.Insert(2, comboCol);
                 }
 
@@ -228,15 +227,10 @@ namespace DomoweWypieki
                 dgv_Orders.Columns["RabatProcent"].DefaultCellStyle.Format = "P0";
                 dgv_Orders.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-                // --- KLUCZOWE ZMIANY DLA COMBOBOXA ---
-
-                // 1. Ustawienie trybu edycji na "Od razu po wejściu" (jedno kliknięcie otwiera listę)
                 dgv_Orders.EditMode = DataGridViewEditMode.EditOnEnter;
-
-                // 2. Odblokowanie całej tabeli
                 dgv_Orders.ReadOnly = false;
 
-                // 3. Zablokowanie edycji dla wszystkich kolumn oprócz naszego ComboBoxa
+                // Zablokowanie edycji dla wszystkich kolumn oprócz ComboBoxa
                 foreach (DataGridViewColumn col in dgv_Orders.Columns)
                 {
                     if (col.Name != "StatusCombo")
@@ -244,6 +238,21 @@ namespace DomoweWypieki
                         col.ReadOnly = true;
                     }
                 }
+            }
+
+            // Wygląd tabeli szczegółów 
+            if (dgv_OrderDetails.Columns.Count > 0)
+            {
+                dgv_OrderDetails.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 8);
+                dgv_OrderDetails.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold);
+
+                dgv_OrderDetails.Columns["IdZamowienia"].Visible = false; // Ukrywamy zbędne ID
+                dgv_OrderDetails.Columns["CenaBazowa"].DefaultCellStyle.Format = "c"; 
+                dgv_OrderDetails.Columns["CenaRazem"].DefaultCellStyle.Format = "c"; 
+                dgv_OrderDetails.Columns["SumaDoplat"].DefaultCellStyle.Format = "c";
+
+                dgv_OrderDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgv_OrderDetails.ReadOnly = true; // Szczegółów  nie wolno edytować
             }
         }
 
@@ -256,8 +265,10 @@ namespace DomoweWypieki
             }
 
             DataRowView selectedRow = (DataRowView)bsOrders.Current;
-            string currentStatus = selectedRow["Status Tekst"].ToString();
 
+            string currentStatus = selectedRow["StatusTekst"].ToString();
+
+            // Inteligentne anulowanie
             if (currentStatus == "Przyjęte")
             {
                 DialogResult confirm = MessageBox.Show(
@@ -271,7 +282,7 @@ namespace DomoweWypieki
                 {
                     int orderId = (int)selectedRow["IdZamowienia"];
                     AnulujZamowienie(orderId);
-                    LoadData();
+                    LoadData(); // Odświeżamy dane po zmianie
                 }
             }
             else
@@ -291,6 +302,7 @@ namespace DomoweWypieki
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
+                
                     string sql = "UPDATE Zamowienia SET IdStatusu = 5 WHERE IdZamowienia = @id";
 
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
@@ -308,11 +320,5 @@ namespace DomoweWypieki
             }
         }
 
-        
-
-        private void dgv_Orders_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }

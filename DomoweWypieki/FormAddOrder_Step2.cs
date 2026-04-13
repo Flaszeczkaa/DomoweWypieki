@@ -13,10 +13,10 @@ namespace DomoweWypieki
 {
     public partial class FormAddOrder_Step2 : Form
     {
-        private DataTable cartTable;
+        private DataTable cartTable; // Odbiera koszyk z Kroku 1
         private decimal baseTotalSum = 0;
 
-        private string connectionString = "Data Source=.;Initial Catalog=DomoweWypieki;Integrated Security=True";
+        private string connectionString = Properties.Settings.Default.DomoweWypiekiConnectionString;
 
         public FormAddOrder_Step2(DataTable providedCart)
         {
@@ -83,6 +83,7 @@ namespace DomoweWypieki
 
         private void CalculateFinalPrice()
         {
+            // Liczy rabat
             decimal discountPercentage = nud_Discount.Value / 100m;
             decimal priceAfterDiscount = baseTotalSum - (baseTotalSum * discountPercentage);
 
@@ -117,10 +118,10 @@ namespace DomoweWypieki
             {
                 MessageBox.Show("Data realizacji nie może być wcześniejsza niż data złożenia zamówienia!",
                                 "Błąd daty", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; // Przerywamy zapisywanie
+                return; 
             }
 
-            // Dodatkowo: sprawdzenie czy data realizacji nie jest z przeszłości
+            //Walidacja - sprawdzenie czy data realizacji nie jest z przeszłości
             if (dtp_RealizationDate.Value.Date < DateTime.Now.Date)
             {
                 MessageBox.Show("Data realizacji nie może być datą z przeszłości!",
@@ -128,7 +129,7 @@ namespace DomoweWypieki
                 return;
             }
 
-            //Zapisywanie danych do bazy - wszystko w jednej transakcji
+            //Zapisywanie danych do bazy 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
@@ -136,7 +137,6 @@ namespace DomoweWypieki
 
                 try
                 {
-                    //Nagłówek Zamówienia
                     string orderSql = @"INSERT INTO dbo.Zamowienia (IdKlienta, IdStatusu, DataZlozenia, DataRealizacji, RabatProcent) 
                                         OUTPUT INSERTED.IdZamowienia 
                                         VALUES (@IdK, @IdS, @DataZ, @DataR, @Rabat)";
@@ -185,7 +185,7 @@ namespace DomoweWypieki
                         cmdPay.ExecuteNonQuery();
                     }
 
-                    transaction.Commit();
+                    transaction.Commit(); // Zatwierdzenie transakcji po pomyślnym wykonaniu wszystkich operacji
                     MessageBox.Show("Zamówienie nr " + newOrderId + " zapisane pomyślnie!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = DialogResult.OK;
                     this.Close();
@@ -207,11 +207,6 @@ namespace DomoweWypieki
                 this.DialogResult = DialogResult.Abort;
                 this.Close();
             }
-        }
-
-        private void btn_AddOrder_Click_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

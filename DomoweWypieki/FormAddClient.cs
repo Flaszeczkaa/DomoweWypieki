@@ -82,7 +82,6 @@ namespace DomoweWypieki
                 }
                 else
                 {
-                    //Jeśli pola puste, zamykamy bez pytania
                     this.Close();
                 }
             }

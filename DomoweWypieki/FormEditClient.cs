@@ -25,33 +25,34 @@ namespace DomoweWypieki
             this.CustomerId = id;
 
             // Zapamiętujemy stan początkowy
-            this.originalFirstName = firstName;
-            this.originalLastName = lastName;
-            this.originalPhone = phone;
-            this.originalEmail = email ?? "";
+            this.originalFirstName = firstName != null ? firstName.Trim() : "";
+            this.originalLastName = lastName != null ? lastName.Trim() : "";
+            this.originalPhone = phone != null ? phone.Trim() : "";
+            this.originalEmail = email != null ? email.Trim() : "";
 
-            
-            this.txtFirstName.Text = firstName;
-            this.txtLastName.Text = lastName;
-            this.txtPhone.Text = phone;
-            this.txtEmail.Text = email;
+            // Wpisujemy wyczyszczone dane do TextBoxów
+            this.txtFirstName.Text = this.originalFirstName;
+            this.txtLastName.Text = this.originalLastName;
+            this.txtPhone.Text = this.originalPhone;
+            this.txtEmail.Text = this.originalEmail;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            // Pobieramy to co wpisał user
             string firstName = txtFirstName.Text.Trim();
             string lastName = txtLastName.Text.Trim();
             string phone = txtPhone.Text.Trim();
             string email = txtEmail.Text.Trim();
 
+            //Sprawdzamy czy cokolwiek się zmieniło - jeśli nie to zamykamy okno bez aktualizacji bazy
             bool hasChanged = firstName != originalFirstName ||
-                      lastName != originalLastName ||
-                      phone != originalPhone ||
-                      email != originalEmail;
+                              lastName != originalLastName ||
+                              phone != originalPhone ||
+                              email != originalEmail;
 
             if (!hasChanged)
             {
-                // Jeśli nie wprowadzono żadnych zmian, po prostu zamknij formularz
                 this.Close();
                 return;
             }

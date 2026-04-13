@@ -14,6 +14,7 @@ namespace DomoweWypieki
     {
         private DataTable cartTable;
 
+        // Stałe dopłaty za dodatki premium
         private const decimal COST_DECORATION = 30.00m;
         private const decimal COST_TOPPER = 25.00m;
         private const decimal COST_PREMIUM = 40.00m;
@@ -22,12 +23,14 @@ namespace DomoweWypieki
         {
             InitializeComponent();
             PrepareCart();
+            cb_category.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void PrepareCart()
         {
             cartTable = new DataTable();
-            // Kolumny widoczne na interfejsie zostawiamy po polsku
+
+            // Definiujemy strukturę koszyka (jakie ma mieć kolumny)
             cartTable.Columns.Add("IdProduktu", typeof(int));
             cartTable.Columns.Add("NazwaProduktu", typeof(string));
             cartTable.Columns.Add("Ilosc", typeof(int));
@@ -36,8 +39,11 @@ namespace DomoweWypieki
             cartTable.Columns.Add("ProsbaKlienta", typeof(string));
             cartTable.Columns.Add("Wartosc", typeof(decimal), "(CenaBazowa + SumaDoplat) * Ilosc");
 
+
             dgv_Cart.DataSource = cartTable;
             dgv_Cart.Columns["IdProduktu"].Visible = false;
+
+            // Formatowanie kolumn z cenami
             dgv_Cart.Columns["Wartosc"].DefaultCellStyle.Format = "c";
             dgv_Cart.Columns["CenaBazowa"].DefaultCellStyle.Format = "c";
             dgv_Cart.Columns["SumaDoplat"].DefaultCellStyle.Format = "c";
@@ -57,6 +63,7 @@ namespace DomoweWypieki
                 cb_category.SelectedIndexChanged -= cb_category_SelectedIndexChanged;
                 btn_delete_from_cart.Click -= btn_delete_from_cart_Click;
 
+                // Podpinamy listę kategorii
                 cb_category.DataSource = this.domoweWypiekiDataSet1.Kategorie;
                 cb_category.DisplayMember = "NazwaKategorii";
                 cb_category.ValueMember = "IdKategorii";
@@ -71,12 +78,14 @@ namespace DomoweWypieki
             if (cb_category.SelectedValue != null && int.TryParse(cb_category.SelectedValue.ToString(), out int categoryId))
             {
                 DataView dvProducts = new DataView(this.domoweWypiekiDataSet1.OfertaCukierni);
-                dvProducts.RowFilter = $"IdKategorii = {categoryId} AND (Aktywne = 1 OR Aktywne = True)";
+
+                dvProducts.RowFilter = $"IdKategorii = {categoryId} AND (Aktywne = 1)";
 
                 cb_Cakes.DataSource = dvProducts;
                 cb_Cakes.DisplayMember = "Nazwa";
                 cb_Cakes.ValueMember = "IdProduktu";
 
+                //dodatki premium dostępne tylko dla kategorii "Torty" 
                 if (categoryId == 2)
                 {
                     gb_PremiumAdds.Enabled = true;
@@ -89,6 +98,7 @@ namespace DomoweWypieki
             }
         }
 
+        //reset zaznaczenia dodatków premium i prośby klienta
         private void ClearAddons()
         {
             chbDecorationPremium.Checked = false;
@@ -111,6 +121,7 @@ namespace DomoweWypieki
                 return;
             }
 
+            
             DataRowView selectedRow = (DataRowView)cb_Cakes.SelectedItem;
 
             int productId = Convert.ToInt32(selectedRow["IdProduktu"]);
@@ -122,6 +133,7 @@ namespace DomoweWypieki
             string addonsAndWish = txt_wish.Text.Trim();
             string selectedOptions = "";
 
+            // Naliczanie dopłat, jeśli to tort
             if (gb_PremiumAdds.Enabled)
             {
                 if (chbDecorationPremium.Checked) { addonPrice += COST_DECORATION; selectedOptions += "Dekoracja, "; }
@@ -134,12 +146,14 @@ namespace DomoweWypieki
                 }
             }
 
+            // Dodajemy gotowy wiersz
             cartTable.Rows.Add(productId, productName, quantity, basePrice, addonPrice, addonsAndWish);
 
             nup_Cakes.Value = 1;
             ClearAddons();
         }
 
+        //usuwa zaznaczony produkt z koszyka
         private void btn_delete_from_cart_Click(object sender, EventArgs e)
         {
             if (dgv_Cart.CurrentRow != null && !dgv_Cart.CurrentRow.IsNewRow)
@@ -160,6 +174,7 @@ namespace DomoweWypieki
                 return;
             }
 
+            // Wysyłamy nasz gotowy koszyk do KROKU 2
             FormAddOrder_Step2 formCheckout = new FormAddOrder_Step2(cartTable);
             this.Hide();
 

@@ -16,6 +16,7 @@ namespace DomoweWypieki
         public FormConfectioneryOffer()
         {
             InitializeComponent();
+            // Malowanie na czerwono wycofanych produktów 
             this.dgv_offer.CellFormatting += dgv_offer_CellFormatting;
         }
 
@@ -23,7 +24,7 @@ namespace DomoweWypieki
         {
             if (e.RowIndex >= 0)
             {
-                //Pobieramy dane z zaznaczonego wiersza
+                //Pobieramy dane z zaznaczonego wiersza w pamięci RAM
                 DataRowView currentRow = (DataRowView)ofertaCukierniBindingSource.Current;
 
                 int id = (int)currentRow["IdProduktu"];
@@ -32,11 +33,13 @@ namespace DomoweWypieki
                 string opis = currentRow["Opis"].ToString();
                 decimal cena = (decimal)currentRow["Cena"];
 
+                // Przekazujemy dane do okna edycji
                 FormEditOffer editForm = new FormEditOffer(id, idKategorii, nazwa, opis, cena);
 
                 editForm.StartPosition = FormStartPosition.Manual;
                 editForm.Location = this.Location;
 
+                // Jeśli w oknie edycji zapisano to odświeżamy tabelę
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
                     this.ofertaCukierniTableAdapter.Fill(this.domoweWypiekiDataSet.OfertaCukierni);
@@ -48,6 +51,7 @@ namespace DomoweWypieki
         {
             FormAddOffer formAddOffer = new FormAddOffer();
             this.Hide();
+            // Jeśli dodano nowe ciasto odświeżamy tabelę
             if (formAddOffer.ShowDialog() == DialogResult.OK)
             {
                 this.ofertaCukierniTableAdapter.Fill(this.domoweWypiekiDataSet.OfertaCukierni);
@@ -67,25 +71,20 @@ namespace DomoweWypieki
 
         private void FormConfectioneryOffer_Load(object sender, EventArgs e)
         {
-            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'domoweWypiekiDataSet.OfertaCukierni' . Możesz go przenieść lub usunąć.
+            // Ładowanie danych z bazy do wirtualnego DataSetu 
             this.ofertaCukierniTableAdapter.Fill(this.domoweWypiekiDataSet.OfertaCukierni);
-
         }
 
-        private void dgv_offer_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        private void dgv_offer_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
 
         private void btn_withdraw_from_sale_Click(object sender, EventArgs e)
         {
-            // 1. Sprawdzamy, czy zaznaczono wiersz w BindingSource
+            // REGUŁA BIZNESOWA: Soft Delete 
             if (ofertaCukierniBindingSource.Current != null)
             {
-                // 2. Pobieramy aktualny wiersz jako obiekt Twojego DataSetu
-                // Rzutujemy na konkretny typ wiersza wygenerowany przez Visual Studio
                 var selectedRow = (DomoweWypiekiDataSet.OfertaCukierniRow)((DataRowView)ofertaCukierniBindingSource.Current).Row;
 
+                // Zabezpieczenie: czy już jest wycofane?
                 if (!selectedRow.Aktywne)
                 {
                     MessageBox.Show($"Ciasto '{selectedRow.Nazwa}' jest już wycofane z oferty.", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -94,29 +93,21 @@ namespace DomoweWypieki
 
                 string nazwaCiasta = selectedRow.Nazwa;
 
-                // 3. Potwierdzenie operacji
-                DialogResult result = MessageBox.Show(
-                    $"Czy na pewno chcesz wycofać '{nazwaCiasta}' z oferty?",
-                    "Potwierdzenie",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show($"Czy na pewno chcesz wycofać '{nazwaCiasta}' z oferty?", "Potwierdzenie", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
                 {
                     try
                     {
-                        // 4. Zmieniamy wartość kolumny Aktywne na false (0 w bazie)
                         selectedRow.Aktywne = false;
 
-                        // 5. Kończymy edycję w BindingSource, aby zatwierdzić zmiany w DataSet
                         ofertaCukierniBindingSource.EndEdit();
 
-                        // 6. Przesyłamy zmiany z DataSetu do fizycznej bazy danych
+                        // Adapter wysyła komendę UPDATE do bazy SQL
                         this.ofertaCukierniTableAdapter.Update(this.domoweWypiekiDataSet.OfertaCukierni);
 
                         MessageBox.Show("Produkt został wycofany z oferty.", "Sukces");
-
-                        dgv_offer.Refresh();
+                        dgv_offer.Refresh(); 
                     }
                     catch (Exception ex)
                     {
@@ -130,12 +121,11 @@ namespace DomoweWypieki
             }
         }
 
+        //Automatyczne malowanie na czerwono wycofanych produktów
         private void dgv_offer_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            // Sprawdzamy czy to nie jest nagłówek i czy wiersz zawiera dane
             if (e.RowIndex < 0 || e.RowIndex >= dgv_offer.Rows.Count) return;
 
-            // Pobieramy wiersz danych powiązany z tym rzędem w DataGridView
             var rowView = dgv_offer.Rows[e.RowIndex].DataBoundItem as DataRowView;
             if (rowView != null)
             {

@@ -30,16 +30,6 @@ namespace DomoweWypieki
             }
         }
 
-        private void btn_return_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Czy na pewno chcesz zakończyć pracę i wrócić do menu?", "Powrót", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                this.Close();
-            }
-        }
-
         private void btn_add_customer_Click(object sender, EventArgs e)
         {
             FormAddClient addClientForm = new FormAddClient();
@@ -111,9 +101,15 @@ namespace DomoweWypieki
             }
         }
 
-        private void dgv_customers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btn_return_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("Czy na pewno chcesz zakończyć pracę i wrócić do menu?", "Powrót", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
+
     }
 }

@@ -20,6 +20,7 @@ namespace DomoweWypieki
         {
             InitializeComponent();
             this.Load += FormAddOffer_Load;
+            comboBox_category.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void FormAddOffer_Load(object sender, EventArgs e)
@@ -33,6 +34,7 @@ namespace DomoweWypieki
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
+                    // Ładujemy słownik kategorii do ComboBoxa
                     string query = "SELECT IdKategorii, NazwaKategorii FROM Kategorie";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
@@ -40,11 +42,10 @@ namespace DomoweWypieki
 
                     adapter.Fill(ds, "Kategorie");
 
-
                     comboBox_category.DataSource = ds.Tables["Kategorie"];
-                    comboBox_category.DisplayMember = "NazwaKategorii"; 
-                    comboBox_category.ValueMember = "IdKategorii";  
-                    comboBox_category.SelectedIndex = -1;
+                    comboBox_category.DisplayMember = "NazwaKategorii";
+                    comboBox_category.ValueMember = "IdKategorii";
+                    comboBox_category.SelectedIndex = -1; 
                 }
             }
             catch (Exception ex)
@@ -65,12 +66,14 @@ namespace DomoweWypieki
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            // Walidacja
             if (string.IsNullOrWhiteSpace(txtoffername.Text) || comboBox_category.SelectedValue == null)
             {
                 MessageBox.Show("Proszę uzupełnić nazwę i rodzaj oferty.");
                 return;
             }
 
+            // Cena musi być > 0
             if (numericUpDown_price.Value <= 0)
             {
                 MessageBox.Show("Cena musi być większa od 0 zł.", "Błąd walidacji", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -79,38 +82,19 @@ namespace DomoweWypieki
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    // Zapytanie definiujące strukturę dla Adaptera
-                    string query = "SELECT * FROM OfertaCukierni WHERE 1=0"; // Pobieramy tylko schemat
+                DomoweWypiekiDataSetTableAdapters.OfertaCukierniTableAdapter adapter = new DomoweWypiekiDataSetTableAdapters.OfertaCukierniTableAdapter();
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                int idKategorii = (int)comboBox_category.SelectedValue;
+                string nazwa = txtoffername.Text.Trim();
+                string opis = txtOpis.Text.Trim();
+                decimal cena = numericUpDown_price.Value;
+                bool aktywne = true; // Zawsze true dla nowych wypieków
 
-                    // SqlCommandBuilder automatycznie wygeneruje polecenie INSERT
-                    SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
+                adapter.Insert(idKategorii, nazwa, opis, cena, aktywne);
 
-                    DataSet ds = new DataSet();
-                    adapter.Fill(ds, "OfertaCukierni");
-
-                    // Tworzenie nowego wiersza w pamięci RAM (Disconnected)
-                    DataTable table = ds.Tables["OfertaCukierni"];
-                    DataRow newRow = table.NewRow();
-
-                    newRow["IdKategorii"] = comboBox_category.SelectedValue;
-                    newRow["Nazwa"] = txtoffername.Text;
-                    newRow["Opis"] = txtOpis.Text;
-                    newRow["Cena"] = numericUpDown_price.Value;
-                    newRow["Aktywne"] = 1;
-
-                    table.Rows.Add(newRow);
-
-                    // Synchronizacja zmian z bazą danych
-                    adapter.Update(ds, "OfertaCukierni");
-
-                    MessageBox.Show("Pomyślnie dodano nową ofertę!");
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
+                MessageBox.Show("Pomyślnie dodano nową ofertę!");
+                this.DialogResult = DialogResult.OK; // Daje sygnał oknie głównemu, żeby odświeżyło tabelę
+                this.Close();
             }
             catch (Exception ex)
             {
@@ -118,49 +102,6 @@ namespace DomoweWypieki
             }
         }
 
-        private void comboBox_category_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void lbl_UsersInfo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numericUpDown_price_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtOpis_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtoffername_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_surename_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_name_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

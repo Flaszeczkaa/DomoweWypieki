@@ -109,7 +109,7 @@
             this.dgv_Orders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_Orders.Size = new System.Drawing.Size(902, 218);
             this.dgv_Orders.TabIndex = 13;
-            this.dgv_Orders.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Orders_CellContentClick);
+          
             // 
             // btn_cancel
             // 

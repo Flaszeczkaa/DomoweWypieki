@@ -256,7 +256,7 @@
             this.btn_AddOrder.TabIndex = 28;
             this.btn_AddOrder.Text = "Zatwierdź i utwórz";
             this.btn_AddOrder.UseVisualStyleBackColor = false;
-            this.btn_AddOrder.Click += new System.EventHandler(this.btn_AddOrder_Click_1);
+         
             // 
             // klienciTableAdapter1
             // 

@@ -49,6 +49,7 @@ namespace DomoweWypieki
             string currentDescription = txt_Description.Text.Trim();
             decimal currentPrice = nud_Price.Value;
 
+            // Sprawdzamy czy użytkownik dokonał jakiejś zmiany
             bool hasChanged = currentName != originalName ||
                               currentDescription != originalDescription ||
                               currentPrice != originalPrice;
@@ -59,7 +60,7 @@ namespace DomoweWypieki
                 return;
             }
 
-            //WALIDACJA - Cena > 0 zgodnie z CHECK w SQL
+            // WAalidacja
             if (currentPrice <= 0)
             {
                 MessageBox.Show("Cena musi być większa od zera!", "Błąd walidacji", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -72,28 +73,15 @@ namespace DomoweWypieki
                 return;
             }
 
-            // zapis zmian do bazy
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    string sql = "UPDATE OfertaCukierni SET Nazwa = @name, Opis = @desc, Cena = @price WHERE IdProduktu = @id";
+                DomoweWypiekiDataSetTableAdapters.OfertaCukierniTableAdapter adapter = new DomoweWypiekiDataSetTableAdapters.OfertaCukierniTableAdapter();
 
-                    using (SqlCommand cmd = new SqlCommand(sql, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@name", currentName);
-                        cmd.Parameters.AddWithValue("@desc", currentDescription);
-                        cmd.Parameters.AddWithValue("@price", currentPrice);
-                        cmd.Parameters.AddWithValue("@id", productId);
-
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
-                    }
-                }
+                adapter.UpdateOfferQuery(currentName, currentDescription, currentPrice, productId);
 
                 MessageBox.Show("Zmiany w ofercie zostały zapisane.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                this.DialogResult = DialogResult.OK; 
+                this.DialogResult = DialogResult.OK; // Daje sygnał do odświeżenia tabeli głównej
                 this.Close();
             }
             catch (Exception ex)
